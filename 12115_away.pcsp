@@ -26,8 +26,8 @@ var inAir = false;
 var danger = 0;
 
 // Actions based on FIFA player ratings
-// ShortPass, LongPass, LongShot, Finishing, Volley, and Header
-enum {SP, LP, LS, FI, VO, HD};
+// ShortPass, LongPass, LongShot, Finishing, Volley, Header and Attacking Cross
+enum {SP, LP, LS, FI, VO, HD, AC};
 
 // Match URL: https://www.premierleague.com/match/12115
 
@@ -57,7 +57,7 @@ AtkDef = [pos[R] == 1]Def(73, 71, 38, R) [] [pos[CR] == 1]Def(68, 63, 38, CR) []
 // See their processes below for more information on what those parameters are
 // The prob. to lose for the attacking team's midfielders is based on the defending team's midfielders
 // The prob. to lose for the attacking team's forwards is based on the defending team's defenders
-AtkMid = [pos[RL] == 1]Mid(79, 76, 74, 59, RL) [] [pos[C] == 1]Mid(83, 80, 57, 59, C) [] [pos[LR] == 1]Mid(78, 73, 75, 59, LR);
+AtkMid = [pos[RL] == 1]Mid(79, 76, 74, 59, 40, RL) [] [pos[C] == 1]Mid(83, 80, 57, 59, 10, C) [] [pos[LR] == 1]Mid(78, 73, 75, 59, 89, LR); // HC: Added fake ratings for m here in Mid() process TODO: use legit rating and test
 AtkFor = [pos[RL] == 1]For(77, 75, 74, 77, 75, RL) [] [pos[C] == 1]For(75, 73, 66, 76, 75, C) [] [pos[LR] == 1]For(73, 65, 65, 69, 75, LR);
 
 ///////////// HOME TEAM PLAYERS (Defending Team) /////////////
@@ -70,6 +70,13 @@ DefKep = [pos[C] == 1]Kep_2(72, C);
 // Furthermore, based on the type of action taken, only some players will be eligible to receive the ball
 // E.g., If a defender at L does a shortPass, the midfielder at R should not be able to receive it
 // The eligible players are updated with UpdatePos
+
+// HC: Prob dont need this at all
+// Guard attack cross: attack cross done between forwards players. Hence the guard states (are similar to attforPos in Mid() process? Someone please check) 
+//Cross(i, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]attackCross -> pcase {
+//	i: cross -> UpdatePos(p, AC); AtkFor
+//	100-i: tackled{danger = 2;} -> Skip
+//};
 
 Kep_1(i, j, p) = [atkDefPos[p-2] == 1 || atkDefPos[p-1] == 1 || atkDefPos[p] == 1 || atkDefPos[p+1] == 1 || atkDefPos[p+2] == 1]shortPass -> pcase {
 	i: pass -> UpdatePos(p, SP); AtkDef
@@ -87,7 +94,8 @@ Def(i, j, k, p) = [atkMidPos[p-2] == 1 || atkMidPos[p-1] == 1 || atkMidPos[p] ==
 	k: tackled{danger = 4;} -> Skip
 };
 
-Mid(i, j, k, l, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
+// HC: Added m to take in attacking_crossing rating
+Mid(i, j, k, l, m, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
 	i: pass -> UpdatePos(p, SP); AtkFor
 	l: tackled{danger = 3;} -> Skip
 } [] [atkForPos[p-6] == 1 || atkForPos[p-5] == 1 || atkForPos[p-4] == 1 || atkForPos[p-3] == 1 || atkForPos[p+3] == 1 || atkForPos[p+4] == 1 || atkForPos[p+5] == 1 || atkForPos[p+6] == 1]longPass -> pcase {
@@ -95,6 +103,9 @@ Mid(i, j, k, l, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p]
 	l: tackled{danger = 3;} -> Skip
 } [] [defKepPos[C] == 1]longShot -> pcase {
 	k: shoot -> UpdatePos(p, LS); DefKep
+	l: tackled{danger = 3;} -> Skip
+} [] [atkMidPos[p-2] == 1 || atkMidPos[p-1] == 1 || atkMidPos[p] == 1 || atkMidPos[p+1] == 1 || atkMidPos[p+2] == 1]attackCross -> pcase { // The guard clause is wrong, evaluate how to change to correct one
+	m: cross -> UpdatePos(p, AC); AtkFor // cross -> Attack forwards. // TODO: UpdatePos process for cross
 	l: tackled{danger = 3;} -> Skip
 };
 
