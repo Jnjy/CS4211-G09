@@ -86,6 +86,12 @@ Kep_1(r_shortPass, r_longPass, p) = [atkDefPos[p-2] == 1 || atkDefPos[p-1] == 1 
 	100-r_longPass: intercepted{danger = 5;} -> Skip
 };
 
+/*
+actions to add for defender:
+- dribble one pos up and pass to striker
+- cross to another defender
+- dribble up and shoot
+*/
 Def(r_shortPass, r_longPass, r_tackled, p) = [atkMidPos[p-2] == 1 || atkMidPos[p-1] == 1 || atkMidPos[p] == 1 || atkMidPos[p+1] == 1 || atkMidPos[p+2] == 1]shortPass -> pcase {
 	r_shortPass: pass -> UpdatePos(p, SP); AtkMid
 	r_tackled: tackled{danger = 4;} -> Skip
@@ -94,7 +100,14 @@ Def(r_shortPass, r_longPass, r_tackled, p) = [atkMidPos[p-2] == 1 || atkMidPos[p
 	r_tackled: tackled{danger = 4;} -> Skip
 };
 
-Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
+/*
+actions to add for midfielder:
+- dribble and shoot
+- side pass
+- lob
+- first touch
+*/
+Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
 	r_shortPass: pass -> UpdatePos(p, SP); AtkFor
 	r_tackled: tackled{danger = 3;} -> Skip
 } [] [atkForPos[p-6] == 1 || atkForPos[p-5] == 1 || atkForPos[p-4] == 1 || atkForPos[p-3] == 1 || atkForPos[p+3] == 1 || atkForPos[p+4] == 1 || atkForPos[p+5] == 1 || atkForPos[p+6] == 1]longPass -> pcase {
@@ -106,8 +119,14 @@ Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, p) = [atkForPos[p-2
 } [] [atkForPos[RL] == 1 || atkForPos[LR] == 1]attackCross -> pcase { // changed, discuss see if correct
 	r_cross: cross -> UpdatePos(p, AC); AtkFor // cross -> Attack forwards. // TODO: UpdatePos process for cross
 	r_tackled: tackled{danger = 3;} -> Skip
+} [] []dribbleShoot -> pcase {
+	r_dribble: dribble -> shoot
 };
 
+/*
+actions that can be added to forward
+- short pass (cross)
+*/
 For(r_closeShot, r_longShot, r_volley, r_header, r_tackled, p) = [defKepPos[C] == 1]finish -> pcase {
 	r_closeShot: shoot -> UpdatePos(p, FI); DefKep
 	r_tackled: tackled{danger = 2;} -> Skip
@@ -188,3 +207,11 @@ UpdatePos(currPos, action) = case {
 #assert AtkKep |= F G Goal2 with prob;
 #assert AtkKep |= F G Goal3 with prob;
 #assert AtkKep |= F G Goal4 with prob;
+
+/*
+general idea on added action:
+- allow defender to carry out offensive move
+- allow player of the same position to pass to each other
+- allow players to make fancy play (dribble)
+- allow happening of play such as penalty or possibly freekick 
+*/
