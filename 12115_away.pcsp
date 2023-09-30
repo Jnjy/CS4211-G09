@@ -95,7 +95,7 @@ Def(r_shortPass, r_longPass, r_tackled, p) = [atkMidPos[p-2] == 1 || atkMidPos[p
 };
 
 // HC: Added m to take in attacking_crossing rating
-Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_sidePass, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
+Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
 	r_shortPass: pass -> UpdatePos(p, SP); AtkFor
 	r_tackled: tackled{danger = 3;} -> Skip
 } [] [atkForPos[p-6] == 1 || atkForPos[p-5] == 1 || atkForPos[p-4] == 1 || atkForPos[p-3] == 1 || atkForPos[p+3] == 1 || atkForPos[p+4] == 1 || atkForPos[p+5] == 1 || atkForPos[p+6] == 1]longPass -> pcase {
@@ -105,7 +105,7 @@ Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_sidePass, p) = [atkForPos[
 	r_longShot: shoot -> UpdatePos(p, LS); DefKep
 	r_tackled: tackled{danger = 3;} -> Skip
 } [] [atkMidPos[p-2] == 1 || atkMidPos[p-1] == 1 || atkMidPos[p] == 1 || atkMidPos[p+1] == 1 || atkMidPos[p+2] == 1]attackCross -> pcase { // The guard clause is wrong, evaluate how to change to correct one
-	r_sidePass: cross -> UpdatePos(p, AC); AtkFor // cross -> Attack forwards. // TODO: UpdatePos process for cross
+	r_cross: cross -> UpdatePos(p, AC); AtkFor // cross -> Attack forwards. // TODO: UpdatePos process for cross
 	r_tackled: tackled{danger = 3;} -> Skip
 };
 
