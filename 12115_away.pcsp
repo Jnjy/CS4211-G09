@@ -103,7 +103,7 @@ Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, p) = [atkForPos[p-2
 } [] [defKepPos[C] == 1]longShot -> pcase {
 	r_longShot: shoot -> UpdatePos(p, LS); DefKep
 	r_tackled: tackled{danger = 3;} -> Skip
-} [] [atkMidPos[p-2] == 1 || atkMidPos[p-1] == 1 || atkMidPos[p] == 1 || atkMidPos[p+1] == 1 || atkMidPos[p+2] == 1]attackCross -> pcase { // The guard clause is wrong, evaluate how to change to correct one
+} [] [atkForPos[RL] == 1 || atkForPos[LR] == 1]attackCross -> pcase { // changed, discuss see if correct
 	r_cross: cross -> UpdatePos(p, AC); AtkFor // cross -> Attack forwards. // TODO: UpdatePos process for cross
 	r_tackled: tackled{danger = 3;} -> Skip
 };
@@ -135,6 +135,7 @@ UpdatePos(currPos, action) = case {
 		case {
 			action == SP: {pos[L] = 1; pos[LR] = 1; pos[CL] = 1; pos[C] = 0; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
 			action == LP: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 1; pos[CR] = 1; pos[RL] = 1; pos[R] = 1;} -> Skip
+			action == AC: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 0; pos[CR] = 0; pos[RL] = 1; pos[R] = 0;} -> Skip
 			default: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 1; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
 		}
 	currPos == LR:
@@ -171,6 +172,7 @@ UpdatePos(currPos, action) = case {
 		case {
 			action == SP: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 0; pos[CR] = 1; pos[RL] = 1; pos[R] = 1;} -> Skip
 			action == LP: {pos[L] = 1; pos[LR] = 1; pos[CL] = 1; pos[C] = 1; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
+			action == AC: {pos[L] = 0; pos[LR] = 1; pos[CL] = 0; pos[C] = 0; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
 			default: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 1; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
 		}
 };
