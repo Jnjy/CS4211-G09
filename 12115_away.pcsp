@@ -57,7 +57,7 @@ AtkDef = [pos[R] == 1]Def(73, 71, 38, R) [] [pos[CR] == 1]Def(68, 63, 38, CR) []
 // See their processes below for more information on what those parameters are
 // The prob. to lose for the attacking team's midfielders is based on the defending team's midfielders
 // The prob. to lose for the attacking team's forwards is based on the defending team's defenders
-AtkMid = [pos[RL] == 1]Mid(79, 76, 74, 59, 40, RL) [] [pos[C] == 1]Mid(83, 80, 57, 59, 10, C) [] [pos[LR] == 1]Mid(78, 73, 75, 59, 89, LR); // HC: Added fake ratings for m here in Mid() process TODO: use legit rating and test
+AtkMid = [pos[RL] == 1]Mid(79, 76, 74, 59, 40, 79, RL) [] [pos[C] == 1]Mid(83, 80, 57, 59, 10, 79, C) [] [pos[LR] == 1]Mid(78, 73, 75, 59, 89, 79,LR); // HC: Added fake ratings for m here in Mid() process TODO: use legit rating and test
 AtkFor = [pos[RL] == 1]For(77, 75, 74, 77, 75, RL) [] [pos[C] == 1]For(75, 73, 66, 76, 75, C) [] [pos[LR] == 1]For(73, 65, 65, 69, 75, LR);
 
 ///////////// HOME TEAM PLAYERS (Defending Team) /////////////
@@ -95,7 +95,7 @@ Def(r_shortPass, r_longPass, r_tackled, p) = [atkMidPos[p-2] == 1 || atkMidPos[p
 };
 
 // HC: Added m to take in attacking_crossing rating
-Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
+Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
 	r_shortPass: pass -> UpdatePos(p, SP); AtkFor
 	r_tackled: tackled{danger = 3;} -> Skip
 } [] [atkForPos[p-6] == 1 || atkForPos[p-5] == 1 || atkForPos[p-4] == 1 || atkForPos[p-3] == 1 || atkForPos[p+3] == 1 || atkForPos[p+4] == 1 || atkForPos[p+5] == 1 || atkForPos[p+6] == 1]longPass -> pcase {
@@ -106,6 +106,9 @@ Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, p) = [atkForPos[p-2
 	r_tackled: tackled{danger = 3;} -> Skip
 } [] [atkMidPos[p-2] == 1 || atkMidPos[p-1] == 1 || atkMidPos[p] == 1 || atkMidPos[p+1] == 1 || atkMidPos[p+2] == 1]attackCross -> pcase { // The guard clause is wrong, evaluate how to change to correct one
 	r_cross: cross -> UpdatePos(p, AC); AtkFor // cross -> Attack forwards. // TODO: UpdatePos process for cross
+	r_tackled: tackled{danger = 3;} -> Skip
+} [] [defKepPos[C] == 1]dribbleThrough -> pcase {
+	r_dribble: dribble -> UpdatePos(p, DR); DefKep
 	r_tackled: tackled{danger = 3;} -> Skip
 };
 
@@ -133,6 +136,7 @@ UpdatePos(currPos, action) = case {
 		case {
 			action == SP: {pos[L] = 1; pos[LR] = 1; pos[CL] = 1; pos[C] = 0; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
 			action == LP: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 1; pos[CR] = 1; pos[RL] = 1; pos[R] = 1;} -> Skip
+			
 			default: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 1; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
 		}
 	currPos == LR:
@@ -184,3 +188,15 @@ UpdatePos(currPos, action) = case {
 #assert AtkKep |= F G Goal2 with prob;
 #assert AtkKep |= F G Goal3 with prob;
 #assert AtkKep |= F G Goal4 with prob;
+
+/*
+Things to take note of:
+- possible to add player speed into weight of tackle
+- gk ratings (diving, handling, kicking, reflexes or positioning into weight of def2keep)
+- dribbling can be combined weigths of skill_dribbling and skill_ball_control
+
+improvements after presentation
+- script + backward movements
+
+* ask TA if there is a requirement to model backwards
+*/
