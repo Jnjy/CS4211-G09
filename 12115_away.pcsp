@@ -57,9 +57,17 @@ AtkDef = [pos[R] == 1]Def(73, 71, 38, R) [] [pos[CR] == 1]Def(68, 63, 38, CR) []
 // See their processes below for more information on what those parameters are
 // The prob. to lose for the attacking team's midfielders is based on the defending team's midfielders
 // The prob. to lose for the attacking team's forwards is based on the defending team's defenders
+<<<<<<< HEAD
 AtkMid = [pos[RL] == 1]Mid(79, 76, 74, 59, 40, 79, RL) [] [pos[C] == 1]Mid(83, 80, 57, 59, 10, 79, C) [] [pos[LR] == 1]Mid(78, 73, 75, 59, 89, 79,LR); // HC: Added fake ratings for m here in Mid() process TODO: use legit rating and test
 AtkFor = [pos[RL] == 1]For(77, 75, 74, 77, 75, RL) [] [pos[C] == 1]For(75, 73, 66, 76, 75, C) [] [pos[LR] == 1]For(73, 65, 65, 69, 75, LR) []
 		 [pos[R] == 1 || pos[CR] == 1]Mid(79, 76, 74, 59, 40, 79, RL) [] [pos[CL] == 1 || pos[CR] == 1]Mid(83, 80, 57, 59, 10, 79, C) [] [pos[L] == 1 || pos[CL] == 1]Mid(78, 73, 75, 59, 89, 79,LR);
+=======
+
+// TO CLARIFY: Why is tackle all 59?
+// AtkMid players -> 0: Jordan Veretout 1: Ashley Westwood 2: Idrissa Gueye
+AtkMid = [pos[RL] == 1]Mid(79, 76, 74, 59, 73, RL) [] [pos[C] == 1]Mid(83, 80, 57, 59, 82, C) [] [pos[LR] == 1]Mid(78, 73, 75, 59, 59, LR);
+AtkFor = [pos[RL] == 1]For(77, 75, 74, 77, 75, RL) [] [pos[C] == 1]For(75, 73, 66, 76, 75, C) [] [pos[LR] == 1]For(73, 65, 65, 69, 75, LR);
+>>>>>>> ec9437e460d7f70bd9da9a4a8461727be59a6ad4
 
 ///////////// HOME TEAM PLAYERS (Defending Team) /////////////
 // Home team defenders, midfielders and forwards are already implicitly "defending" via the prob. to lose the ball parameter
@@ -95,8 +103,12 @@ Def(r_shortPass, r_longPass, r_tackled, p) = [atkMidPos[p-2] == 1 || atkMidPos[p
 	r_tackled: tackled{danger = 4;} -> Skip
 };
 
+<<<<<<< HEAD
 // HC: Added m to take in attacking_crossing rating
 Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
+=======
+Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
+>>>>>>> ec9437e460d7f70bd9da9a4a8461727be59a6ad4
 	r_shortPass: pass -> UpdatePos(p, SP); AtkFor
 	r_tackled: tackled{danger = 3;} -> Skip
 } [] [atkForPos[p-6] == 1 || atkForPos[p-5] == 1 || atkForPos[p-4] == 1 || atkForPos[p-3] == 1 || atkForPos[p+3] == 1 || atkForPos[p+4] == 1 || atkForPos[p+5] == 1 || atkForPos[p+6] == 1]longPass -> pcase {
@@ -105,7 +117,7 @@ Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [at
 } [] [defKepPos[C] == 1]longShot -> pcase {
 	r_longShot: shoot -> UpdatePos(p, LS); DefKep
 	r_tackled: tackled{danger = 3;} -> Skip
-} [] [atkMidPos[p-2] == 1 || atkMidPos[p-1] == 1 || atkMidPos[p] == 1 || atkMidPos[p+1] == 1 || atkMidPos[p+2] == 1]attackCross -> pcase { // The guard clause is wrong, evaluate how to change to correct one
+} [] [atkForPos[RL] == 1 || atkForPos[LR] == 1]attackCross -> pcase { // changed, discuss see if correct
 	r_cross: cross -> UpdatePos(p, AC); AtkFor // cross -> Attack forwards. // TODO: UpdatePos process for cross
 	r_tackled: tackled{danger = 3;} -> Skip
 } [] [defKepPos[C] == 1]dribbleThrough -> pcase {
@@ -127,18 +139,29 @@ For(r_closeShot, r_longShot, r_volley, r_header, r_tackled, p) = [defKepPos[C] =
 	r_tackled: tackled{danger = 2;} -> Skip
 };
 
+// Penalty can be modelled here, we can use some other metrics to justify a foul probability.
 Kep_2(r_save, p) = attemptSave -> pcase {
 	r_save: save{danger = 1;} -> Skip
 	100-r_save: concede -> Skip
 };
+<<<<<<< HEAD
 // L LR CL C CR RL R
+=======
+
+// Pos is the grid of eligible positions that can receive the ball
+// Let's say shoot -> UpdatePos(p, VO); DefKep, the pos[] of possible position to recevie when we go back to DefKep (Line 65) will be the newly updated pos[].
+>>>>>>> ec9437e460d7f70bd9da9a4a8461727be59a6ad4
 UpdatePos(currPos, action) = case {
 	currPos == L: 
 		case {
 			action == SP: {pos[L] = 1; pos[LR] = 1; pos[CL] = 1; pos[C] = 0; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
 			action == LP: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 1; pos[CR] = 1; pos[RL] = 1; pos[R] = 1;} -> Skip
+<<<<<<< HEAD
 			action == LS: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 1; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
 			action == DR: {pos[L] = 0; pos[LR] = 1; pos[CL] = 0; pos[C] = 0; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
+=======
+			action == AC: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 0; pos[CR] = 0; pos[RL] = 1; pos[R] = 0;} -> Skip
+>>>>>>> ec9437e460d7f70bd9da9a4a8461727be59a6ad4
 			default: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 1; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
 		}
 	currPos == LR:
@@ -185,8 +208,12 @@ UpdatePos(currPos, action) = case {
 		case {
 			action == SP: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 0; pos[CR] = 1; pos[RL] = 1; pos[R] = 1;} -> Skip
 			action == LP: {pos[L] = 1; pos[LR] = 1; pos[CL] = 1; pos[C] = 1; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
+<<<<<<< HEAD
 			action == LS: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 1; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
 			action == DR: {pos[L] = 0; pos[LR] = 1; pos[CL] = 0; pos[C] = 1; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
+=======
+			action == AC: {pos[L] = 0; pos[LR] = 1; pos[CL] = 0; pos[C] = 0; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
+>>>>>>> ec9437e460d7f70bd9da9a4a8461727be59a6ad4
 			default: {pos[L] = 0; pos[LR] = 0; pos[CL] = 0; pos[C] = 1; pos[CR] = 0; pos[RL] = 0; pos[R] = 0;} -> Skip
 		}
 };
@@ -203,6 +230,7 @@ UpdatePos(currPos, action) = case {
 #assert AtkKep |= F G Goal3 with prob;
 #assert AtkKep |= F G Goal4 with prob;
 
+<<<<<<< HEAD
 /*
 Things to take note of:
 - possible to add player speed into weight of tackle
@@ -214,3 +242,8 @@ improvements after presentation
 
 * ask TA if there is a requirement to model backwards
 */
+=======
+// Results
+// OLD -> The Assertion (AtkKep() |= F G Goal0 with prob) is Valid with Probability [0.00779, 0.06565]; VS NEW -> 
+// OLD -> The Assertion (AtkKep() |= F G Goal1 with prob) is Valid with Probability [0.02783, 0.23446]; VS NEW ->  
+>>>>>>> ec9437e460d7f70bd9da9a4a8461727be59a6ad4
