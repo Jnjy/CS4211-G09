@@ -58,8 +58,8 @@ AtkDef = [pos[R] == 1]Def(73, 71, 38, R) [] [pos[CR] == 1]Def(68, 63, 38, CR) []
 // The prob. to lose for the attacking team's midfielders is based on the defending team's midfielders
 // The prob. to lose for the attacking team's forwards is based on the defending team's defenders
 AtkMid = [pos[RL] == 1]Mid(79, 76, 74, 59, 73, 79, RL) [] [pos[C] == 1]Mid(83, 80, 57, 59, 82, 79, C) [] [pos[LR] == 1]Mid(78, 73, 75, 59, 59, 79,LR); // HC: Added fake ratings for m here in Mid() process TODO: use legit rating and test
-AtkFor = [pos[RL] == 1]For(77, 75, 74, 77, 75, RL) [] [pos[C] == 1]For(75, 73, 66, 76, 75, C) [] [pos[LR] == 1]For(73, 65, 65, 69, 75, LR) []
-		 [pos[R] == 1 || pos[CR] == 1]Mid(79, 76, 74, 59, 73, 79, RL) [] [pos[CL] == 1 || pos[CR] == 1]Mid(83, 80, 57, 59, 82, 79, C) [] [pos[L] == 1 || pos[CL] == 1]Mid(78, 73, 75, 59, 59, 79,LR);
+AtkFor = [pos[RL] == 1]For(77, 75, 74, 77, 75, RL) [] [pos[C] == 1]For(75, 73, 66, 76, 75, C) [] [pos[LR] == 1]For(73, 65, 65, 69, 75, LR)
+		 [] [pos[R] == 1 || pos[CR] == 1]Mid(79, 76, 74, 59, 73, 79, RL) [] [pos[CL] == 1 || pos[CR] == 1]Mid(83, 80, 57, 59, 82, 79, C) [] [pos[L] == 1 || pos[CL] == 1]Mid(78, 73, 75, 59, 59, 79,LR);
 /*
 TO CLARIFY: Why is tackle all 59?
 AtkMid players -> 0: Jordan Veretout 1: Ashley Westwood 2: Idrissa Gueye
@@ -226,5 +226,5 @@ improvements after presentation
 * ask TA if there is a requirement to model backwards
 */
 // Results
-// OLD -> The Assertion (AtkKep() |= F G Goal0 with prob) is Valid with Probability [0.00779, 0.06565]; VS NEW -> 
-// OLD -> The Assertion (AtkKep() |= F G Goal1 with prob) is Valid with Probability [0.02783, 0.23446]; VS NEW ->  
+// OLD -> The Assertion (AtkKep() |= F G Goal0 with prob) is Valid with Probability [0.00779, 0.06565]; VS NEW -> The Assertion (AtkKep() |= F G Goal0 with prob) is Valid with Probability [0.02757, 0.24095];
+// OLD -> The Assertion (AtkKep() |= F G Goal1 with prob) is Valid with Probability [0.02783, 0.23446]; VS NEW -> The Assertion (AtkKep() |= F G Goal1 with prob) is Valid with Probability [0.09845, 0.24095];
