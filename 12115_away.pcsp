@@ -57,7 +57,10 @@ AtkDef = [pos[R] == 1]Def(73, 71, 38, R) [] [pos[CR] == 1]Def(68, 63, 38, CR) []
 // See their processes below for more information on what those parameters are
 // The prob. to lose for the attacking team's midfielders is based on the defending team's midfielders
 // The prob. to lose for the attacking team's forwards is based on the defending team's defenders
-AtkMid = [pos[RL] == 1]Mid(79, 76, 74, 59, 40, RL) [] [pos[C] == 1]Mid(83, 80, 57, 59, 10, C) [] [pos[LR] == 1]Mid(78, 73, 75, 59, 89, LR); // HC: Added fake ratings for m here in Mid() process TODO: use legit rating and test
+
+// TO CLARIFY: Why is tackle all 59?
+// AtkMid players -> 0: Jordan Veretout 1: Ashley Westwood 2: Idrissa Gueye
+AtkMid = [pos[RL] == 1]Mid(79, 76, 74, 59, 73, RL) [] [pos[C] == 1]Mid(83, 80, 57, 59, 82, C) [] [pos[LR] == 1]Mid(78, 73, 75, 59, 59, LR);
 AtkFor = [pos[RL] == 1]For(77, 75, 74, 77, 75, RL) [] [pos[C] == 1]For(75, 73, 66, 76, 75, C) [] [pos[LR] == 1]For(73, 65, 65, 69, 75, LR);
 
 ///////////// HOME TEAM PLAYERS (Defending Team) /////////////
@@ -188,3 +191,7 @@ UpdatePos(currPos, action) = case {
 #assert AtkKep |= F G Goal2 with prob;
 #assert AtkKep |= F G Goal3 with prob;
 #assert AtkKep |= F G Goal4 with prob;
+
+// Results
+// OLD -> The Assertion (AtkKep() |= F G Goal0 with prob) is Valid with Probability [0.00779, 0.06565]; VS NEW -> 
+// OLD -> The Assertion (AtkKep() |= F G Goal1 with prob) is Valid with Probability [0.02783, 0.23446]; VS NEW ->  
