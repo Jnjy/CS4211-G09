@@ -45,8 +45,10 @@ var defKepPos = [-1(6), 0, 0, 0, 1, 0, 0, 0, -1(6)];
 // The gurad only allows eligible players to get the ball, see Individual Positions section for more info
 
 // For example keepers can only ShortPass or LongPass
-// Here 64, 64 represents the FIFA ShortPass and LongPass ratings for this particular player
-AtkKep = [pos[C] == 1]Kep_1(64, 64, C);
+// Here 64, 64 represents the FIFA ShortPass and LongPass ratings for this particular player 
+// Goal Keeper for AWAY -> Bradley Guzwan
+AtkKep = [pos[C] == 1]Kep_1(64, 64, C); // This (64, 64) is probably from gk_kicking ?
+
 
 // Here for the defenders, the first 3 parameters are with respect to the ShortPass, LongPass, and prob. to lose the ball respectively 
 // The prob. to lose the ball for the attacking team's defenders was calculated based on the defending team forward's player ratings 
@@ -69,7 +71,8 @@ Adding state - midfielder in forward position brings the prob back down to befor
 
 ///////////// HOME TEAM PLAYERS (Defending Team) /////////////
 // Home team defenders, midfielders and forwards are already implicitly "defending" via the prob. to lose the ball parameter
-DefKep = [pos[C] == 1]Kep_2(72, C);
+// HOME Goal Keeper -> Artur Boruc
+DefKep = [pos[C] == 1]Kep_2(72, C); // This is from gk_handling
 
 ///////////// Individual Positions /////////////
 // There is a guard to every action (e.g., shortPass) a player can take
