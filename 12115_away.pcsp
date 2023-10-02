@@ -59,7 +59,9 @@ AtkDef = [pos[R] == 1]Def(73, 71, 38, 82, R) [] [pos[CR] == 1]Def(68, 63, 38, 82
 // See their processes below for more information on what those parameters are
 // The prob. to lose for the attacking team's midfielders is based on the defending team's midfielders
 // The prob. to lose for the attacking team's forwards is based on the defending team's defenders
+
 AtkMid = [pos[RL] == 1]Mid(79, 76, 74, 59, 73, 79, RL) [] [pos[C] == 1]Mid(83, 80, 57, 59, 82, 79, C) [] [pos[LR] == 1]Mid(78, 73, 75, 59, 59, 79,LR); // HC: Added fake ratings for m here in Mid() process TODO: use legit rating and test
+// For() takes in r_closeShot, r_longShot, r_volley, r_header, r_tackled, r_dribble
 AtkFor = [pos[RL] == 1]For(77, 75, 74, 77, 75, 90, RL) [] [pos[C] == 1]For(75, 73, 66, 76, 75, 90, C) [] [pos[LR] == 1]For(73, 65, 65, 69, 75, 90, LR);
 // [pos[R] == 1 || pos[CR] == 1]Mid(79, 76, 74, 59, 73, 79, RL) [] [pos[CL] == 1 || pos[CR] == 1]Mid(83, 80, 57, 59, 82, 79, C) [] [pos[L] == 1 || pos[CL] == 1]Mid(78, 73, 75, 59, 59, 79,LR);
 

@@ -4,10 +4,13 @@ Short Pass ->  25
 Long Pass ->  34
 Dribble ->  14
 Attacking Crossing ->  12
-Attacking Finishing ->  11
-Attacking Heading ->  11
-Attacking Volleys ->  13
 Attacking FK Accuracy ->  19
+
+###### Forwards() ######
+Attacking Finishing ->  11
+Power Long Shot ->  15
+Attacking Volleys ->  13
+Attacking Heading ->  11
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  82
@@ -15,6 +18,7 @@ Goal Keeping Handling ->  72
 Goal Keeping Kicking ->  62
 Goal Keeping Positioning ->  74
 Goal Keeping Reflexes ->  83 
+=================================================
 
 Player Name ->  Simon Francis
 Club Name ->  AFC Bournemouth
@@ -22,10 +26,13 @@ Short Pass ->  70
 Long Pass ->  64
 Dribble ->  69
 Attacking Crossing ->  75
-Attacking Finishing ->  25
-Attacking Heading ->  68
-Attacking Volleys ->  26
 Attacking FK Accuracy ->  61
+
+###### Forwards() ######
+Attacking Finishing ->  25
+Power Long Shot ->  62
+Attacking Volleys ->  26
+Attacking Heading ->  68
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  12
@@ -33,6 +40,7 @@ Goal Keeping Handling ->  6
 Goal Keeping Kicking ->  10
 Goal Keeping Positioning ->  8
 Goal Keeping Reflexes ->  12 
+=================================================
 
 Player Name ->  Tommy Elphick
 Club Name ->  AFC Bournemouth
@@ -40,10 +48,13 @@ Short Pass ->  65
 Long Pass ->  50
 Dribble ->  50
 Attacking Crossing ->  46
-Attacking Finishing ->  32
-Attacking Heading ->  74
-Attacking Volleys ->  13
 Attacking FK Accuracy ->  39
+
+###### Forwards() ######
+Attacking Finishing ->  32
+Power Long Shot ->  43
+Attacking Volleys ->  13
+Attacking Heading ->  74
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  12
@@ -51,6 +62,7 @@ Goal Keeping Handling ->  13
 Goal Keeping Kicking ->  7
 Goal Keeping Positioning ->  7
 Goal Keeping Reflexes ->  16 
+=================================================
 
 Player Name ->  Steve Cook
 Club Name ->  AFC Bournemouth
@@ -58,10 +70,13 @@ Short Pass ->  68
 Long Pass ->  60
 Dribble ->  54
 Attacking Crossing ->  40
-Attacking Finishing ->  20
-Attacking Heading ->  69
-Attacking Volleys ->  29
 Attacking FK Accuracy ->  22
+
+###### Forwards() ######
+Attacking Finishing ->  20
+Power Long Shot ->  13
+Attacking Volleys ->  29
+Attacking Heading ->  69
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  14
@@ -69,6 +84,7 @@ Goal Keeping Handling ->  12
 Goal Keeping Kicking ->  7
 Goal Keeping Positioning ->  14
 Goal Keeping Reflexes ->  12 
+=================================================
 
 Player Name ->  Charlie Daniels
 Club Name ->  AFC Bournemouth
@@ -76,10 +92,13 @@ Short Pass ->  68
 Long Pass ->  64
 Dribble ->  69
 Attacking Crossing ->  72
-Attacking Finishing ->  45
-Attacking Heading ->  61
-Attacking Volleys ->  32
 Attacking FK Accuracy ->  68
+
+###### Forwards() ######
+Attacking Finishing ->  45
+Power Long Shot ->  46
+Attacking Volleys ->  32
+Attacking Heading ->  61
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  14
@@ -87,6 +106,7 @@ Goal Keeping Handling ->  16
 Goal Keeping Kicking ->  13
 Goal Keeping Positioning ->  6
 Goal Keeping Reflexes ->  7 
+=================================================
 
 Player Name ->  Matt Ritchie
 Club Name ->  AFC Bournemouth
@@ -94,10 +114,13 @@ Short Pass ->  69
 Long Pass ->  66
 Dribble ->  77
 Attacking Crossing ->  75
-Attacking Finishing ->  73
-Attacking Heading ->  38
-Attacking Volleys ->  33
 Attacking FK Accuracy ->  65
+
+###### Forwards() ######
+Attacking Finishing ->  73
+Power Long Shot ->  74
+Attacking Volleys ->  33
+Attacking Heading ->  38
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  15
@@ -105,6 +128,7 @@ Goal Keeping Handling ->  8
 Goal Keeping Kicking ->  11
 Goal Keeping Positioning ->  14
 Goal Keeping Reflexes ->  13 
+=================================================
 
 Player Name ->  Dan Gosling
 Club Name ->  AFC Bournemouth
@@ -112,10 +136,13 @@ Short Pass ->  73
 Long Pass ->  71
 Dribble ->  66
 Attacking Crossing ->  68
-Attacking Finishing ->  64
-Attacking Heading ->  61
-Attacking Volleys ->  64
 Attacking FK Accuracy ->  57
+
+###### Forwards() ######
+Attacking Finishing ->  64
+Power Long Shot ->  73
+Attacking Volleys ->  64
+Attacking Heading ->  61
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  6
@@ -123,6 +150,7 @@ Goal Keeping Handling ->  15
 Goal Keeping Kicking ->  14
 Goal Keeping Positioning ->  15
 Goal Keeping Reflexes ->  6 
+=================================================
 
 Player Name ->  Andrew Surman
 Club Name ->  AFC Bournemouth
@@ -130,10 +158,13 @@ Short Pass ->  82
 Long Pass ->  76
 Dribble ->  72
 Attacking Crossing ->  68
-Attacking Finishing ->  63
-Attacking Heading ->  59
-Attacking Volleys ->  55
 Attacking FK Accuracy ->  68
+
+###### Forwards() ######
+Attacking Finishing ->  63
+Power Long Shot ->  65
+Attacking Volleys ->  55
+Attacking Heading ->  59
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  16
@@ -141,6 +172,7 @@ Goal Keeping Handling ->  14
 Goal Keeping Kicking ->  7
 Goal Keeping Positioning ->  16
 Goal Keeping Reflexes ->  8 
+=================================================
 
 Player Name ->  Marc Pugh
 Club Name ->  AFC Bournemouth
@@ -148,10 +180,13 @@ Short Pass ->  68
 Long Pass ->  59
 Dribble ->  75
 Attacking Crossing ->  70
-Attacking Finishing ->  70
-Attacking Heading ->  66
-Attacking Volleys ->  49
 Attacking FK Accuracy ->  69
+
+###### Forwards() ######
+Attacking Finishing ->  70
+Power Long Shot ->  66
+Attacking Volleys ->  49
+Attacking Heading ->  66
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  14
@@ -159,6 +194,7 @@ Goal Keeping Handling ->  15
 Goal Keeping Kicking ->  13
 Goal Keeping Positioning ->  8
 Goal Keeping Reflexes ->  10 
+=================================================
 
 Player Name ->  Joshua King
 Club Name ->  AFC Bournemouth
@@ -166,10 +202,13 @@ Short Pass ->  69
 Long Pass ->  47
 Dribble ->  76
 Attacking Crossing ->  63
-Attacking Finishing ->  65
-Attacking Heading ->  53
-Attacking Volleys ->  67
 Attacking FK Accuracy ->  42
+
+###### Forwards() ######
+Attacking Finishing ->  65
+Power Long Shot ->  58
+Attacking Volleys ->  67
+Attacking Heading ->  53
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  12
@@ -177,6 +216,7 @@ Goal Keeping Handling ->  9
 Goal Keeping Kicking ->  11
 Goal Keeping Positioning ->  12
 Goal Keeping Reflexes ->  7 
+=================================================
 
 Player Name ->  Callum Wilson
 Club Name ->  AFC Bournemouth
@@ -184,10 +224,13 @@ Short Pass ->  70
 Long Pass ->  60
 Dribble ->  73
 Attacking Crossing ->  52
-Attacking Finishing ->  79
-Attacking Heading ->  62
-Attacking Volleys ->  65
 Attacking FK Accuracy ->  45
+
+###### Forwards() ######
+Attacking Finishing ->  79
+Power Long Shot ->  64
+Attacking Volleys ->  65
+Attacking Heading ->  62
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  10
@@ -195,4 +238,5 @@ Goal Keeping Handling ->  15
 Goal Keeping Kicking ->  8
 Goal Keeping Positioning ->  10
 Goal Keeping Reflexes ->  6 
+=================================================
 

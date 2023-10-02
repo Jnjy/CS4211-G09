@@ -16,7 +16,7 @@ def get_player_stats_by_ids(year="20152016", player_ids=[], is_away_team=False):
     
     sys.stdout = sys.__stdout__
     
-
+# For() takes in r_closeShot, r_longShot, r_volley, r_header, r_tackled, r_dribble
 def output_player_stats(df):
   print("Player Name -> ", df['long_name'].values[0])
   print("Club Name -> ", df['club_name'].values[0])
@@ -24,17 +24,20 @@ def output_player_stats(df):
   print("Long Pass -> ", df['skill_long_passing'].values[0])
   print("Dribble -> ", df['skill_dribbling'].values[0])
   print("Attacking Crossing -> ", df['attacking_crossing'].values[0])
-  print("Attacking Finishing -> ", df['attacking_finishing'].values[0])
-  print("Attacking Heading -> ", df['attacking_heading_accuracy'].values[0])
-  print("Attacking Volleys -> ", df['attacking_volleys'].values[0])
   print("Attacking FK Accuracy -> ", df['skill_fk_accuracy'].values[0])
+  # r_closeShot, r_longShot, r_volley, r_header,
+  print("\n###### Forwards() ######")
+  print("Attacking Finishing -> ", df['attacking_finishing'].values[0])
+  print("Power Long Shot -> ", df['power_long_shots'].values[0])
+  print("Attacking Volleys -> ", df['attacking_volleys'].values[0])
+  print("Attacking Heading -> ", df['attacking_heading_accuracy'].values[0])
   
   print("\n###### Goal Keeping Stats ######")
   print("Goal Keeping Diving -> ", df['goalkeeping_diving'].values[0])
   print("Goal Keeping Handling -> ", df['goalkeeping_handling'].values[0])
   print("Goal Keeping Kicking -> ", df['goalkeeping_kicking'].values[0])
   print("Goal Keeping Positioning -> ", df['goalkeeping_positioning'].values[0])
-  print("Goal Keeping Reflexes -> ", df['goalkeeping_reflexes'].values[0], "\n")
+  print("Goal Keeping Reflexes -> ", df['goalkeeping_reflexes'].values[0], "\n=================================================\n")
 
 # run from project root
 # python ./scripts/player_stats.py ./datasets/ratings/epl_ratings_20152016.csv 9014
