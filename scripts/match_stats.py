@@ -15,12 +15,12 @@ def group_players_by_lineup(file_path, match_id):
   url = f'https://www.premierleague.com/match/{match_id}'
   df = df[df['match_url'] == url]
   home_line_up, away_line_up = process_lineup(df['home_formation'].values[0]), process_lineup(df['away_formation'].values[0])
-  print(home_line_up, away_line_up)
+  print(f"For match id: {match_id}\n", "Home line up -> ", home_line_up, "Away line up -> ",  away_line_up)
   return home_line_up, away_line_up
 
 def process_lineup(lineup):
   if len(lineup.split('-')) != 1:
-    return lineup.split('-')
+    return list(int(x) for x in lineup.split('-'))
   else:
     result = []
     arr = lineup.split('/')

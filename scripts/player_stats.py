@@ -27,7 +27,12 @@ def get_player_stats_by_ids(year="20152016", player_ids=[], is_away_team=False, 
 # For() takes in r_closeShot, r_longShot, r_volley, r_header, r_tackled, r_dribble
 def output_player_stats(df, player_type: int):
   print(f"###### Player Type: {player_enum.player_output_mapping.get(player_type)}  ######")
-  print("Player Name -> ", df['long_name'].values[0])
+  
+  try:
+    print("Player Name -> ", df['long_name'].values[0])
+  except:
+    print("Player (fifa id) -> ", df['sofifa_id'].values[0])
+    
   print("Club Name -> ", df['club_name'].values[0])
   # print("Short Pass -> ", df['attacking_short_passing'].values[0])
   # print("Long Pass -> ", df['skill_long_passing'].values[0])
@@ -36,14 +41,14 @@ def output_player_stats(df, player_type: int):
   print("Attacking FK Accuracy -> ", df['skill_fk_accuracy'].values[0])
   
   # r_shortPass, r_longPass, r_tackled, r_dribble
-  print("\n###### Defenders() ######")
+  print("\n###### Def() ######")
   print("Short Pass -> ", df['attacking_short_passing'].values[0])
   print("Long Pass -> ", df['skill_long_passing'].values[0])
   print("Tackling -> ", df['defending_sliding_tackle'].values[0], " **This should be weighted tackle metrics, ignore for now!")
   print("Dribble -> ", df['skill_dribbling'].values[0])
   
   # r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble
-  print("\n###### MidFielders() ######")
+  print("\n###### Mid() ######")
   print("Short Pass -> ", df['attacking_short_passing'].values[0])
   print("Long Pass -> ", df['skill_long_passing'].values[0])
   print("Power Long Shot -> ", df['power_long_shots'].values[0])
@@ -52,7 +57,7 @@ def output_player_stats(df, player_type: int):
   print("Dribble -> ", df['skill_dribbling'].values[0])
   
   # r_closeShot, r_longShot, r_volley, r_header, r_tackled, r_dribble
-  print("\n###### Forwards() ######")
+  print("\n###### For() ######")
   print("Attacking Finishing -> ", df['attacking_finishing'].values[0])
   print("Power Long Shot -> ", df['power_long_shots'].values[0])
   print("Attacking Volleys -> ", df['attacking_volleys'].values[0])
