@@ -152,7 +152,7 @@ For(r_closeShot, r_longShot, r_volley, r_header, r_tackled, r_dribble, p) = [def
 Kep_2(r_save, p) = [isPenalty == true]attemptPenaltySave -> pcase {
 	25: save{danger = 1;} -> Skip
 	75: concede -> Skip
-} attemptSave -> pcase {
+} [] attemptSave -> pcase {
 	r_save: save{danger = 1;} -> Skip
 	100 - r_save: concede -> Skip
 };
