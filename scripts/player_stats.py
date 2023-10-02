@@ -15,12 +15,22 @@ def get_player_stats_by_ids(year="20152016", player_ids=[], is_away_team=False, 
     for idx, player_id in enumerate(player_ids):
       if idx == 0:
         output_player_stats(get_player_stats_by_id(file_path, player_id), player_enum.GOALKEEPER)
-      elif 1 <= idx <= lineup[0]:
-        output_player_stats(get_player_stats_by_id(file_path, player_id), player_enum.DEFENDER)
-      elif lineup[0] < idx <= lineup[0] + lineup[1]:
-        output_player_stats(get_player_stats_by_id(file_path, player_id), player_enum.MIDFIELDER)
-      elif lineup[0] + lineup[1] < idx <= lineup[0] + lineup[1] + lineup[2]:
-        output_player_stats(get_player_stats_by_id(file_path, player_id), player_enum.FORWARD)
+      if len(lineup) == 3:
+        if 1 <= idx <= lineup[0]:
+          output_player_stats(get_player_stats_by_id(file_path, player_id), player_enum.DEFENDER)
+        elif lineup[0] < idx <= lineup[0] + lineup[1]:
+          output_player_stats(get_player_stats_by_id(file_path, player_id), player_enum.MIDFIELDER)
+        elif lineup[0] + lineup[1] < idx <= lineup[0] + lineup[1] + lineup[2]:
+          output_player_stats(get_player_stats_by_id(file_path, player_id), player_enum.FORWARD)
+      if len(lineup) == 4:
+        if 1 <= idx <= lineup[0]:
+          output_player_stats(get_player_stats_by_id(file_path, player_id), player_enum.DEFENDER)
+        elif lineup[0] < idx <= lineup[0] + lineup[1]:
+          output_player_stats(get_player_stats_by_id(file_path, player_id), player_enum.MIDFIELDER)
+        elif lineup[0] + lineup[1] < idx <= lineup[0] + lineup[1] + lineup[2]:
+          output_player_stats(get_player_stats_by_id(file_path, player_id), player_enum.MIDFIELDER)
+        elif lineup[0] + lineup[1] + lineup[2] < idx <= lineup[0] + lineup[1] + lineup[2] + lineup[3]:
+          output_player_stats(get_player_stats_by_id(file_path, player_id), player_enum.FORWARD)
     
     sys.stdout = sys.__stdout__
     

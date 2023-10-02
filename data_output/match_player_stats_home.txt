@@ -208,7 +208,7 @@ Goal Keeping Positioning ->  13
 Goal Keeping Reflexes ->  16 
 =================================================
 
-###### Player Type: FORWARD  ######
+###### Player Type: MIDFIELDER  ######
 Player Name ->  Sadio Mané
 Club Name ->  Southampton
 Attacking FK Accuracy ->  64
@@ -243,7 +243,7 @@ Goal Keeping Positioning ->  7
 Goal Keeping Reflexes ->  14 
 =================================================
 
-###### Player Type: FORWARD  ######
+###### Player Type: MIDFIELDER  ######
 Player Name ->  James Ward-Prowse
 Club Name ->  Southampton
 Attacking FK Accuracy ->  79
@@ -278,7 +278,7 @@ Goal Keeping Positioning ->  15
 Goal Keeping Reflexes ->  15 
 =================================================
 
-###### Player Type: FORWARD  ######
+###### Player Type: MIDFIELDER  ######
 Player Name ->  Steven Davis
 Club Name ->  Southampton
 Attacking FK Accuracy ->  69
@@ -313,7 +313,7 @@ Goal Keeping Positioning ->  9
 Goal Keeping Reflexes ->  11 
 =================================================
 
-###### Player Type: FORWARD  ######
+###### Player Type: MIDFIELDER  ######
 Player Name ->  Player (fifa id) ->  199434
 Club Name ->  Southampton
 Attacking FK Accuracy ->  76
@@ -346,5 +346,40 @@ Goal Keeping Handling ->  11
 Goal Keeping Kicking ->  14
 Goal Keeping Positioning ->  9
 Goal Keeping Reflexes ->  16 
+=================================================
+
+###### Player Type: FORWARD  ######
+Player Name ->  Graziano Pellè
+Club Name ->  Southampton
+Attacking FK Accuracy ->  40
+
+###### Def() ######
+Short Pass ->  65
+Long Pass ->  64
+Tackling ->  33  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  64
+
+###### Mid() ######
+Short Pass ->  65
+Long Pass ->  64
+Power Long Shot ->  69
+Tackling ->  33  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  44
+Dribble ->  64
+
+###### For() ######
+Attacking Finishing ->  79
+Power Long Shot ->  69
+Attacking Volleys ->  79
+Attacking Heading ->  91
+Tackling ->  33  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  64
+
+###### Goal Keeping Stats ######
+Goal Keeping Diving ->  15
+Goal Keeping Handling ->  12
+Goal Keeping Kicking ->  14
+Goal Keeping Positioning ->  13
+Goal Keeping Reflexes ->  9 
 =================================================
 
