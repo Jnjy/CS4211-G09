@@ -36,8 +36,8 @@ def __main__():
   h_lineup, a_lineup = group_players_by_lineup(arguments[0], int(arguments[1]))
   
   # Start getting player stats
-  player_stats.get_player_stats_by_ids("20152016", home_ids, is_away_team=False, lineup=h_lineup)
-  player_stats.get_player_stats_by_ids("20152016", away_ids, is_away_team=True, lineup=a_lineup)
+  player_stats.get_player_stats_by_ids("20172018", home_ids, is_away_team=False, lineup=h_lineup)
+  player_stats.get_player_stats_by_ids("20172018", away_ids, is_away_team=True, lineup=a_lineup)
 
 if __name__ == '__main__':
   __main__()  

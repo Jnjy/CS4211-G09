@@ -1,0 +1,33 @@
+// NOTE: This will only produce probabilities of goal when the away team attacks while the home team defends
+// A similar pcsp file will have to be generated from the home team POV to meaningfully compare which team has the higher chance of scoring during an attack
+
+// Position of players in grid
+// Left, LeftRight, and CenterLeft etc.
+#define L 6;
+#define LR 7;
+#define CL 8;
+#define C 9;
+#define CR 10;
+#define RL 11;
+#define R 12;// Grid of eligible positions that can receive the ball
+// This will change based on the previous position and the action taken
+// 1 means the position is eligible to receive the ball
+// 0 means the position is not eligible to receive the ball
+// See Individual Positions section for more info
+var pos = [-1(6), 0, 0, 0, 1, 0, 0, 0, -1(6)];
+
+// If the ball is in the air
+var inAir = false;
+
+// Penalty Prototype
+
+var isPenalty = false;
+
+// Danger level for the attacking team
+// The lower the value, the lesser the danger
+var danger = 0;
+
+
+// Actions based on FIFA player ratings
+// ShortPass, LongPass, LongShot, Finishing, Volley, Header, Attacking Cross, Dribble
+enum {SP, LP, LS, FI, VO, HD, AC, DR};

@@ -1,385 +1,385 @@
 ###### Player Type: GOALKEEPER  ######
-Player Name ->  Kelvin Davis
-Club Name ->  Southampton
-Attacking FK Accuracy ->  11
+Player Name ->  David De Gea Quintana
+Club Name ->  Manchester United
+Attacking FK Accuracy ->  19
 
 ###### Def() ######
-Short Pass ->  13
-Long Pass ->  21
-Tackling ->  12  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  14
+Short Pass ->  50
+Long Pass ->  51
+Tackling ->  13  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  18
 
 ###### Mid() ######
-Short Pass ->  13
-Long Pass ->  21
-Power Long Shot ->  16
-Tackling ->  12  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  11
-Dribble ->  14
+Short Pass ->  50
+Long Pass ->  51
+Power Long Shot ->  12
+Tackling ->  13  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  17
+Dribble ->  18
 
 ###### For() ######
-Attacking Finishing ->  12
-Power Long Shot ->  16
-Attacking Volleys ->  15
-Attacking Heading ->  20
-Tackling ->  12  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  14
+Attacking Finishing ->  13
+Power Long Shot ->  12
+Attacking Volleys ->  13
+Attacking Heading ->  21
+Tackling ->  13  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  18
 
 ###### Goal Keeping Stats ######
-Goal Keeping Diving ->  74
-Goal Keeping Handling ->  68
-Goal Keeping Kicking ->  55
-Goal Keeping Positioning ->  70
-Goal Keeping Reflexes ->  75 
+Goal Keeping Diving ->  90
+Goal Keeping Handling ->  85
+Goal Keeping Kicking ->  87
+Goal Keeping Positioning ->  86
+Goal Keeping Reflexes ->  90 
 =================================================
 
 ###### Player Type: DEFENDER  ######
-Player Name ->  Cédric Ricardo Alves Soares
-Club Name ->  Southampton
-Attacking FK Accuracy ->  68
+Player Name ->  Luis Antonio Valencia Mosquera
+Club Name ->  Manchester United
+Attacking FK Accuracy ->  66
 
 ###### Def() ######
-Short Pass ->  75
+Short Pass ->  77
 Long Pass ->  69
-Tackling ->  80  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  76
+Tackling ->  77  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  82
 
 ###### Mid() ######
-Short Pass ->  75
+Short Pass ->  77
 Long Pass ->  69
-Power Long Shot ->  78
-Tackling ->  80  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  79
-Dribble ->  76
+Power Long Shot ->  62
+Tackling ->  77  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  85
+Dribble ->  82
 
 ###### For() ######
-Attacking Finishing ->  57
-Power Long Shot ->  78
-Attacking Volleys ->  68
-Attacking Heading ->  65
-Tackling ->  80  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  76
+Attacking Finishing ->  58
+Power Long Shot ->  62
+Attacking Volleys ->  69
+Attacking Heading ->  64
+Tackling ->  77  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  82
 
 ###### Goal Keeping Stats ######
-Goal Keeping Diving ->  11
-Goal Keeping Handling ->  14
-Goal Keeping Kicking ->  12
-Goal Keeping Positioning ->  12
-Goal Keeping Reflexes ->  11 
-=================================================
-
-###### Player Type: DEFENDER  ######
-Player Name ->  José Miguel da Rocha Fonte
-Club Name ->  Southampton
-Attacking FK Accuracy ->  32
-
-###### Def() ######
-Short Pass ->  63
-Long Pass ->  54
-Tackling ->  84  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  59
-
-###### Mid() ######
-Short Pass ->  63
-Long Pass ->  54
-Power Long Shot ->  29
-Tackling ->  84  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  36
-Dribble ->  59
-
-###### For() ######
-Attacking Finishing ->  40
-Power Long Shot ->  29
-Attacking Volleys ->  34
-Attacking Heading ->  77
-Tackling ->  84  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  59
-
-###### Goal Keeping Stats ######
-Goal Keeping Diving ->  7
+Goal Keeping Diving ->  16
 Goal Keeping Handling ->  11
-Goal Keeping Kicking ->  16
-Goal Keeping Positioning ->  10
-Goal Keeping Reflexes ->  6 
+Goal Keeping Kicking ->  10
+Goal Keeping Positioning ->  7
+Goal Keeping Reflexes ->  7 
 =================================================
 
 ###### Player Type: DEFENDER  ######
-Player Name ->  Virgil van Dijk
-Club Name ->   Southampton
-Attacking FK Accuracy ->  70
+Player Name ->  Eric Bertrand Bailly
+Club Name ->  Manchester United
+Attacking FK Accuracy ->  43
 
 ###### Def() ######
-Short Pass ->  71
-Long Pass ->  76
-Tackling ->  74  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  69
+Short Pass ->  72
+Long Pass ->  56
+Tackling ->  85  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  63
 
 ###### Mid() ######
-Short Pass ->  71
-Long Pass ->  76
-Power Long Shot ->  64
-Tackling ->  74  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  53
-Dribble ->  69
+Short Pass ->  72
+Long Pass ->  56
+Power Long Shot ->  48
+Tackling ->  85  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  51
+Dribble ->  63
 
 ###### For() ######
-Attacking Finishing ->  55
-Power Long Shot ->  64
-Attacking Volleys ->  43
-Attacking Heading ->  74
-Tackling ->  74  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  69
+Attacking Finishing ->  33
+Power Long Shot ->  48
+Attacking Volleys ->  42
+Attacking Heading ->  81
+Tackling ->  85  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  63
 
 ###### Goal Keeping Stats ######
-Goal Keeping Diving ->  13
-Goal Keeping Handling ->  10
-Goal Keeping Kicking ->  13
-Goal Keeping Positioning ->  11
+Goal Keeping Diving ->  14
+Goal Keeping Handling ->  14
+Goal Keeping Kicking ->  10
+Goal Keeping Positioning ->  9
+Goal Keeping Reflexes ->  8 
+=================================================
+
+###### Player Type: DEFENDER  ######
+Player Name ->  Phil Jones
+Club Name ->  Manchester United
+Attacking FK Accuracy ->  35
+
+###### Def() ######
+Short Pass ->  73
+Long Pass ->  67
+Tackling ->  81  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  60
+
+###### Mid() ######
+Short Pass ->  73
+Long Pass ->  67
+Power Long Shot ->  59
+Tackling ->  81  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  64
+Dribble ->  60
+
+###### For() ######
+Attacking Finishing ->  50
+Power Long Shot ->  59
+Attacking Volleys ->  60
+Attacking Heading ->  75
+Tackling ->  81  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  60
+
+###### Goal Keeping Stats ######
+Goal Keeping Diving ->  10
+Goal Keeping Handling ->  8
+Goal Keeping Kicking ->  6
+Goal Keeping Positioning ->  16
 Goal Keeping Reflexes ->  11 
 =================================================
 
 ###### Player Type: DEFENDER  ######
-Player Name ->  Ryan Bertrand
-Club Name ->  Southampton
-Attacking FK Accuracy ->  52
+Player Name ->  Ashley Young
+Club Name ->  Manchester United
+Attacking FK Accuracy ->  72
 
 ###### Def() ######
-Short Pass ->  76
-Long Pass ->  70
-Tackling ->  82  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  74
+Short Pass ->  77
+Long Pass ->  69
+Tackling ->  63  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  78
 
 ###### Mid() ######
-Short Pass ->  76
-Long Pass ->  70
-Power Long Shot ->  54
-Tackling ->  82  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  79
-Dribble ->  74
+Short Pass ->  77
+Long Pass ->  69
+Power Long Shot ->  70
+Tackling ->  63  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  84
+Dribble ->  78
 
 ###### For() ######
-Attacking Finishing ->  35
-Power Long Shot ->  54
-Attacking Volleys ->  43
-Attacking Heading ->  69
-Tackling ->  82  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  74
+Attacking Finishing ->  65
+Power Long Shot ->  70
+Attacking Volleys ->  73
+Attacking Heading ->  54
+Tackling ->  63  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  78
 
 ###### Goal Keeping Stats ######
-Goal Keeping Diving ->  11
-Goal Keeping Handling ->  13
+Goal Keeping Diving ->  16
+Goal Keeping Handling ->  10
 Goal Keeping Kicking ->  15
-Goal Keeping Positioning ->  10
+Goal Keeping Positioning ->  16
 Goal Keeping Reflexes ->  15 
 =================================================
 
 ###### Player Type: MIDFIELDER  ######
-Player Name ->  Victor Wanyama
-Club Name ->  Southampton
-Attacking FK Accuracy ->  57
+Player Name ->  Marouane Fellaini-Bakkioui
+Club Name ->  Manchester United
+Attacking FK Accuracy ->  46
 
 ###### Def() ######
-Short Pass ->  72
-Long Pass ->  68
-Tackling ->  79  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  72
+Short Pass ->  81
+Long Pass ->  66
+Tackling ->  66  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  73
 
 ###### Mid() ######
-Short Pass ->  72
-Long Pass ->  68
-Power Long Shot ->  64
-Tackling ->  79  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  63
-Dribble ->  72
+Short Pass ->  81
+Long Pass ->  66
+Power Long Shot ->  68
+Tackling ->  66  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  61
+Dribble ->  73
 
 ###### For() ######
-Attacking Finishing ->  62
-Power Long Shot ->  64
-Attacking Volleys ->  62
-Attacking Heading ->  73
-Tackling ->  79  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  72
+Attacking Finishing ->  72
+Power Long Shot ->  68
+Attacking Volleys ->  71
+Attacking Heading ->  91
+Tackling ->  66  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  73
 
 ###### Goal Keeping Stats ######
-Goal Keeping Diving ->  6
-Goal Keeping Handling ->  14
-Goal Keeping Kicking ->  10
-Goal Keeping Positioning ->  13
+Goal Keeping Diving ->  8
+Goal Keeping Handling ->  6
+Goal Keeping Kicking ->  9
+Goal Keeping Positioning ->  15
 Goal Keeping Reflexes ->  16 
 =================================================
 
 ###### Player Type: MIDFIELDER  ######
-Player Name ->  Sadio Mané
-Club Name ->  Southampton
+Player Name ->  Player (fifa id) ->  191202
+Club Name ->  Manchester United
+Attacking FK Accuracy ->  67
+
+###### Def() ######
+Short Pass ->  83
+Long Pass ->  78
+Tackling ->  75  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  72
+
+###### Mid() ######
+Short Pass ->  83
+Long Pass ->  78
+Power Long Shot ->  75
+Tackling ->  75  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  68
+Dribble ->  72
+
+###### For() ######
+Attacking Finishing ->  64
+Power Long Shot ->  75
+Attacking Volleys ->  74
+Attacking Heading ->  77
+Tackling ->  75  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  72
+
+###### Goal Keeping Stats ######
+Goal Keeping Diving ->  7
+Goal Keeping Handling ->  15
+Goal Keeping Kicking ->  12
+Goal Keeping Positioning ->  14
+Goal Keeping Reflexes ->  9 
+=================================================
+
+###### Player Type: MIDFIELDER  ######
+Player Name ->  Juan Manuel Mata García
+Club Name ->  Manchester United
+Attacking FK Accuracy ->  84
+
+###### Def() ######
+Short Pass ->  86
+Long Pass ->  77
+Tackling ->  21  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  82
+
+###### Mid() ######
+Short Pass ->  86
+Long Pass ->  77
+Power Long Shot ->  70
+Tackling ->  21  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  84
+Dribble ->  82
+
+###### For() ######
+Attacking Finishing ->  79
+Power Long Shot ->  70
+Attacking Volleys ->  71
+Attacking Heading ->  59
+Tackling ->  21  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  82
+
+###### Goal Keeping Stats ######
+Goal Keeping Diving ->  9
+Goal Keeping Handling ->  10
+Goal Keeping Kicking ->  14
+Goal Keeping Positioning ->  5
+Goal Keeping Reflexes ->  8 
+=================================================
+
+###### Player Type: MIDFIELDER  ######
+Player Name ->  Henrikh Mkhitaryan
+Club Name ->  Manchester United
 Attacking FK Accuracy ->  64
 
 ###### Def() ######
-Short Pass ->  73
-Long Pass ->  67
-Tackling ->  38  **This should be weighted tackle metrics, ignore for now!
+Short Pass ->  84
+Long Pass ->  72
+Tackling ->  55  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  87
+
+###### Mid() ######
+Short Pass ->  84
+Long Pass ->  72
+Power Long Shot ->  75
+Tackling ->  55  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  79
+Dribble ->  87
+
+###### For() ######
+Attacking Finishing ->  77
+Power Long Shot ->  75
+Attacking Volleys ->  81
+Attacking Heading ->  53
+Tackling ->  55  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  87
+
+###### Goal Keeping Stats ######
+Goal Keeping Diving ->  5
+Goal Keeping Handling ->  11
+Goal Keeping Kicking ->  14
+Goal Keeping Positioning ->  5
+Goal Keeping Reflexes ->  7 
+=================================================
+
+###### Player Type: MIDFIELDER  ######
+Player Name ->  Marcus Rashford
+Club Name ->  Manchester United
+Attacking FK Accuracy ->  73
+
+###### Def() ######
+Short Pass ->  74
+Long Pass ->  65
+Tackling ->  25  **This should be weighted tackle metrics, ignore for now!
 Dribble ->  83
 
 ###### Mid() ######
-Short Pass ->  73
-Long Pass ->  67
+Short Pass ->  74
+Long Pass ->  65
 Power Long Shot ->  66
-Tackling ->  38  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  68
+Tackling ->  25  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  72
 Dribble ->  83
 
 ###### For() ######
-Attacking Finishing ->  76
+Attacking Finishing ->  79
 Power Long Shot ->  66
-Attacking Volleys ->  66
-Attacking Heading ->  53
-Tackling ->  38  **This should be weighted tackle metrics, ignore for now!
+Attacking Volleys ->  71
+Attacking Heading ->  68
+Tackling ->  25  **This should be weighted tackle metrics, ignore for now!
 Dribble ->  83
 
 ###### Goal Keeping Stats ######
-Goal Keeping Diving ->  10
-Goal Keeping Handling ->  10
+Goal Keeping Diving ->  11
+Goal Keeping Handling ->  6
 Goal Keeping Kicking ->  15
 Goal Keeping Positioning ->  7
 Goal Keeping Reflexes ->  14 
 =================================================
 
-###### Player Type: MIDFIELDER  ######
-Player Name ->  James Ward-Prowse
-Club Name ->  Southampton
-Attacking FK Accuracy ->  79
-
-###### Def() ######
-Short Pass ->  81
-Long Pass ->  80
-Tackling ->  62  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  73
-
-###### Mid() ######
-Short Pass ->  81
-Long Pass ->  80
-Power Long Shot ->  70
-Tackling ->  62  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  88
-Dribble ->  73
-
-###### For() ######
-Attacking Finishing ->  53
-Power Long Shot ->  70
-Attacking Volleys ->  51
-Attacking Heading ->  57
-Tackling ->  62  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  73
-
-###### Goal Keeping Stats ######
-Goal Keeping Diving ->  12
-Goal Keeping Handling ->  12
-Goal Keeping Kicking ->  10
-Goal Keeping Positioning ->  15
-Goal Keeping Reflexes ->  15 
-=================================================
-
-###### Player Type: MIDFIELDER  ######
-Player Name ->  Steven Davis
-Club Name ->  Southampton
-Attacking FK Accuracy ->  69
-
-###### Def() ######
-Short Pass ->  80
-Long Pass ->  77
-Tackling ->  67  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  76
-
-###### Mid() ######
-Short Pass ->  80
-Long Pass ->  77
-Power Long Shot ->  63
-Tackling ->  67  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  75
-Dribble ->  76
-
-###### For() ######
-Attacking Finishing ->  58
-Power Long Shot ->  63
-Attacking Volleys ->  64
-Attacking Heading ->  53
-Tackling ->  67  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  76
-
-###### Goal Keeping Stats ######
-Goal Keeping Diving ->  9
-Goal Keeping Handling ->  7
-Goal Keeping Kicking ->  13
-Goal Keeping Positioning ->  9
-Goal Keeping Reflexes ->  11 
-=================================================
-
-###### Player Type: MIDFIELDER  ######
-Player Name ->  Player (fifa id) ->  199434
-Club Name ->  Southampton
-Attacking FK Accuracy ->  76
-
-###### Def() ######
-Short Pass ->  81
-Long Pass ->  77
-Tackling ->  26  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  83
-
-###### Mid() ######
-Short Pass ->  81
-Long Pass ->  77
-Power Long Shot ->  66
-Tackling ->  26  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  79
-Dribble ->  83
-
-###### For() ######
-Attacking Finishing ->  69
-Power Long Shot ->  66
-Attacking Volleys ->  73
-Attacking Heading ->  63
-Tackling ->  26  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  83
-
-###### Goal Keeping Stats ######
-Goal Keeping Diving ->  11
-Goal Keeping Handling ->  11
-Goal Keeping Kicking ->  14
-Goal Keeping Positioning ->  9
-Goal Keeping Reflexes ->  16 
-=================================================
-
 ###### Player Type: FORWARD  ######
-Player Name ->  Graziano Pellè
-Club Name ->  Southampton
-Attacking FK Accuracy ->  40
+Player Name ->  Romelu Lukaku Menama
+Club Name ->  Manchester United
+Attacking FK Accuracy ->  66
 
 ###### Def() ######
-Short Pass ->  65
-Long Pass ->  64
-Tackling ->  33  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  64
+Short Pass ->  71
+Long Pass ->  68
+Tackling ->  30  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  77
 
 ###### Mid() ######
-Short Pass ->  65
-Long Pass ->  64
-Power Long Shot ->  69
-Tackling ->  33  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  44
-Dribble ->  64
+Short Pass ->  71
+Long Pass ->  68
+Power Long Shot ->  75
+Tackling ->  30  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  68
+Dribble ->  77
 
 ###### For() ######
-Attacking Finishing ->  79
-Power Long Shot ->  69
-Attacking Volleys ->  79
-Attacking Heading ->  91
-Tackling ->  33  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  64
+Attacking Finishing ->  89
+Power Long Shot ->  75
+Attacking Volleys ->  76
+Attacking Heading ->  87
+Tackling ->  30  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  77
 
 ###### Goal Keeping Stats ######
-Goal Keeping Diving ->  15
-Goal Keeping Handling ->  12
+Goal Keeping Diving ->  8
+Goal Keeping Handling ->  15
 Goal Keeping Kicking ->  14
-Goal Keeping Positioning ->  13
-Goal Keeping Reflexes ->  9 
+Goal Keeping Positioning ->  7
+Goal Keeping Reflexes ->  10 
 =================================================
 

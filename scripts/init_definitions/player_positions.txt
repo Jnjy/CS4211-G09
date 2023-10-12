@@ -1,0 +1,12 @@
+// NOTE: This will only produce probabilities of goal when the away team attacks while the home team defends
+// A similar pcsp file will have to be generated from the home team POV to meaningfully compare which team has the higher chance of scoring during an attack
+
+// Position of players in grid
+// Left, LeftRight, and CenterLeft etc.
+#define L 6;
+#define LR 7;
+#define CL 8;
+#define C 9;
+#define CR 10;
+#define RL 11;
+#define R 12;
