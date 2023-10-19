@@ -2,7 +2,7 @@ import sys
 from match_stats import read_match_and_generate_stats
 
 
-def generate_pcsp(match_id, side):
+def generate_pcsp(match_id, side, year_range="20152016"):
     team_side = "away"
     if side != "away":
         team_side = "home"
@@ -13,7 +13,7 @@ def generate_pcsp(match_id, side):
     ball_receive_positions_and_player_actions = f"{file_path}/ball_receive_positions_and_player_actions.txt"
     soccer_field_grid = f"{file_path}/grids/Grid-{formation}.txt"
     probabilities = f"{file_path}/probabilities/{formation}.txt"
-    home_stats, away_stats = read_match_and_generate_stats(match_id, "20152016")
+    home_stats, away_stats = read_match_and_generate_stats(match_id, year_range)
     placeholder_values = away_stats + [home_stats[0],]
     print(placeholder_values)
 
