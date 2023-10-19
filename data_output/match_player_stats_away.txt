@@ -1,204 +1,274 @@
 ###### Player Type: GOALKEEPER  ######
-Player Name ->  Jordan Pickford
-Club Name ->  Everton
-Attacking FK Accuracy ->  16
+Player Name ->  Bradley Guzan
+Club Name ->  Aston Villa
+Attacking FK Accuracy ->  11
 
 ###### Def() ######
-Short Pass ->  50
-Long Pass ->  53
-Tackling ->  12  **This should be weighted tackle metrics, ignore for now!
+Short Pass ->  26
+Long Pass ->  34
+Tackling ->  14  **This should be weighted tackle metrics, ignore for now!
 Dribble ->  14
 
 ###### Mid() ######
-Short Pass ->  50
-Long Pass ->  53
-Power Long Shot ->  13
-Tackling ->  12  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  17
+Short Pass ->  26
+Long Pass ->  34
+Power Long Shot ->  15
+Tackling ->  14  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  16
 Dribble ->  14
 
 ###### For() ######
-Attacking Finishing ->  19
-Power Long Shot ->  13
-Attacking Volleys ->  20
-Attacking Heading ->  15
-Tackling ->  12  **This should be weighted tackle metrics, ignore for now!
+Attacking Finishing ->  14
+Power Long Shot ->  15
+Attacking Volleys ->  15
+Attacking Heading ->  12
+Tackling ->  14  **This should be weighted tackle metrics, ignore for now!
 Dribble ->  14
 
 ###### Goal Keeping Stats ######
-Goal Keeping Diving ->  77
+Goal Keeping Diving ->  80
 Goal Keeping Handling ->  76
-Goal Keeping Kicking ->  85
-Goal Keeping Positioning ->  73
-Goal Keeping Reflexes ->  82 
+Goal Keeping Kicking ->  64
+Goal Keeping Positioning ->  77
+Goal Keeping Reflexes ->  81 
 =================================================
 
 ###### Player Type: DEFENDER  ######
-Player Name ->  Michael Keane
-Club Name ->  Everton
-Attacking FK Accuracy ->  33
+Player Name ->  Leandro Bacuna
+Club Name ->  Aston Villa
+Attacking FK Accuracy ->  79
 
 ###### Def() ######
-Short Pass ->  74
+Short Pass ->  73
 Long Pass ->  71
-Tackling ->  80  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  66
+Tackling ->  70  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  74
 
 ###### Mid() ######
-Short Pass ->  74
+Short Pass ->  73
 Long Pass ->  71
-Power Long Shot ->  46
-Tackling ->  80  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  60
-Dribble ->  66
+Power Long Shot ->  70
+Tackling ->  70  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  78
+Dribble ->  74
 
 ###### For() ######
-Attacking Finishing ->  50
-Power Long Shot ->  46
-Attacking Volleys ->  40
-Attacking Heading ->  84
-Tackling ->  80  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  66
+Attacking Finishing ->  67
+Power Long Shot ->  70
+Attacking Volleys ->  71
+Attacking Heading ->  63
+Tackling ->  70  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  74
 
 ###### Goal Keeping Stats ######
-Goal Keeping Diving ->  16
-Goal Keeping Handling ->  7
-Goal Keeping Kicking ->  8
-Goal Keeping Positioning ->  14
-Goal Keeping Reflexes ->  11 
+Goal Keeping Diving ->  15
+Goal Keeping Handling ->  8
+Goal Keeping Kicking ->  14
+Goal Keeping Positioning ->  16
+Goal Keeping Reflexes ->  15 
 =================================================
 
 ###### Player Type: DEFENDER  ######
-Player Name ->  Ashley Williams
-Club Name ->  Everton
-Attacking FK Accuracy ->  23
+Player Name ->  Micah Richards
+Club Name ->  Aston Villa
+Attacking FK Accuracy ->  32
 
 ###### Def() ######
-Short Pass ->  71
-Long Pass ->  74
+Short Pass ->  68
+Long Pass ->  63
 Tackling ->  80  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  57
+Dribble ->  63
 
 ###### Mid() ######
-Short Pass ->  71
-Long Pass ->  74
+Short Pass ->  68
+Long Pass ->  63
 Power Long Shot ->  40
 Tackling ->  80  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  32
-Dribble ->  57
+Attacking Crossing ->  67
+Dribble ->  63
 
 ###### For() ######
-Attacking Finishing ->  37
+Attacking Finishing ->  46
 Power Long Shot ->  40
-Attacking Volleys ->  34
-Attacking Heading ->  78
+Attacking Volleys ->  45
+Attacking Heading ->  85
 Tackling ->  80  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  57
+Dribble ->  63
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  7
-Goal Keeping Handling ->  10
-Goal Keeping Kicking ->  16
-Goal Keeping Positioning ->  7
-Goal Keeping Reflexes ->  10 
+Goal Keeping Handling ->  16
+Goal Keeping Kicking ->  15
+Goal Keeping Positioning ->  16
+Goal Keeping Reflexes ->  8 
 =================================================
 
 ###### Player Type: DEFENDER  ######
-Player Name ->  Phil Jagielka
-Club Name ->  Everton
-Attacking FK Accuracy ->  31
-
-###### Def() ######
-Short Pass ->  71
-Long Pass ->  66
-Tackling ->  81  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  49
-
-###### Mid() ######
-Short Pass ->  71
-Long Pass ->  66
-Power Long Shot ->  54
-Tackling ->  81  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  55
-Dribble ->  49
-
-###### For() ######
-Attacking Finishing ->  30
-Power Long Shot ->  54
-Attacking Volleys ->  44
-Attacking Heading ->  79
-Tackling ->  81  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  49
-
-###### Goal Keeping Stats ######
-Goal Keeping Diving ->  32
-Goal Keeping Handling ->  33
-Goal Keeping Kicking ->  38
-Goal Keeping Positioning ->  32
-Goal Keeping Reflexes ->  34 
-=================================================
-
-###### Player Type: MIDFIELDER  ######
-Player Name ->  Rhu-endly Martina
-Club Name ->  Everton
+Player Name ->  Ciaran Clark
+Club Name ->  Aston Villa
 Attacking FK Accuracy ->  45
 
 ###### Def() ######
-Short Pass ->  62
-Long Pass ->  60
-Tackling ->  69  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  62
+Short Pass ->  68
+Long Pass ->  63
+Tackling ->  81  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  55
 
 ###### Mid() ######
-Short Pass ->  62
-Long Pass ->  60
-Power Long Shot ->  60
-Tackling ->  69  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  71
-Dribble ->  62
+Short Pass ->  68
+Long Pass ->  63
+Power Long Shot ->  58
+Tackling ->  81  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  39
+Dribble ->  55
 
 ###### For() ######
-Attacking Finishing ->  45
-Power Long Shot ->  60
-Attacking Volleys ->  44
-Attacking Heading ->  65
-Tackling ->  69  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  62
+Attacking Finishing ->  47
+Power Long Shot ->  58
+Attacking Volleys ->  64
+Attacking Heading ->  81
+Tackling ->  81  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  55
 
 ###### Goal Keeping Stats ######
-Goal Keeping Diving ->  13
-Goal Keeping Handling ->  14
-Goal Keeping Kicking ->  14
+Goal Keeping Diving ->  14
+Goal Keeping Handling ->  7
+Goal Keeping Kicking ->  12
+Goal Keeping Positioning ->  14
+Goal Keeping Reflexes ->  12 
+=================================================
+
+###### Player Type: DEFENDER  ######
+Player Name ->  Jordan Amavi
+Club Name ->  Aston Villa
+Attacking FK Accuracy ->  49
+
+###### Def() ######
+Short Pass ->  72
+Long Pass ->  59
+Tackling ->  77  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  74
+
+###### Mid() ######
+Short Pass ->  72
+Long Pass ->  59
+Power Long Shot ->  62
+Tackling ->  77  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  78
+Dribble ->  74
+
+###### For() ######
+Attacking Finishing ->  69
+Power Long Shot ->  62
+Attacking Volleys ->  65
+Attacking Heading ->  69
+Tackling ->  77  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  74
+
+###### Goal Keeping Stats ######
+Goal Keeping Diving ->  11
+Goal Keeping Handling ->  10
+Goal Keeping Kicking ->  11
 Goal Keeping Positioning ->  14
 Goal Keeping Reflexes ->  12 
 =================================================
 
 ###### Player Type: MIDFIELDER  ######
-Player Name ->  Idrissa Gana Gueye
-Club Name ->  Everton
-Attacking FK Accuracy ->  43
+Player Name ->  Jordan Veretout
+Club Name ->  Aston Villa
+Attacking FK Accuracy ->  73
 
 ###### Def() ######
-Short Pass ->  82
-Long Pass ->  74
-Tackling ->  85  **This should be weighted tackle metrics, ignore for now!
+Short Pass ->  79
+Long Pass ->  76
+Tackling ->  63  **This should be weighted tackle metrics, ignore for now!
 Dribble ->  75
 
 ###### Mid() ######
-Short Pass ->  82
-Long Pass ->  74
-Power Long Shot ->  67
-Tackling ->  85  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  60
+Short Pass ->  79
+Long Pass ->  76
+Power Long Shot ->  74
+Tackling ->  63  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  73
 Dribble ->  75
 
 ###### For() ######
-Attacking Finishing ->  50
-Power Long Shot ->  67
-Attacking Volleys ->  32
-Attacking Heading ->  69
-Tackling ->  85  **This should be weighted tackle metrics, ignore for now!
+Attacking Finishing ->  71
+Power Long Shot ->  74
+Attacking Volleys ->  70
+Attacking Heading ->  53
+Tackling ->  63  **This should be weighted tackle metrics, ignore for now!
 Dribble ->  75
+
+###### Goal Keeping Stats ######
+Goal Keeping Diving ->  9
+Goal Keeping Handling ->  10
+Goal Keeping Kicking ->  11
+Goal Keeping Positioning ->  8
+Goal Keeping Reflexes ->  9 
+=================================================
+
+###### Player Type: MIDFIELDER  ######
+Player Name ->  Ashley Westwood
+Club Name ->  Aston Villa
+Attacking FK Accuracy ->  75
+
+###### Def() ######
+Short Pass ->  83
+Long Pass ->  80
+Tackling ->  64  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  59
+
+###### Mid() ######
+Short Pass ->  83
+Long Pass ->  80
+Power Long Shot ->  57
+Tackling ->  64  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  81
+Dribble ->  59
+
+###### For() ######
+Attacking Finishing ->  47
+Power Long Shot ->  57
+Attacking Volleys ->  48
+Attacking Heading ->  44
+Tackling ->  64  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  59
+
+###### Goal Keeping Stats ######
+Goal Keeping Diving ->  10
+Goal Keeping Handling ->  13
+Goal Keeping Kicking ->  13
+Goal Keeping Positioning ->  7
+Goal Keeping Reflexes ->  8 
+=================================================
+
+###### Player Type: MIDFIELDER  ######
+Player Name ->  Idrissa Gana Gueye
+Club Name ->  Aston Villa
+Attacking FK Accuracy ->  43
+
+###### Def() ######
+Short Pass ->  78
+Long Pass ->  73
+Tackling ->  74  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  73
+
+###### Mid() ######
+Short Pass ->  78
+Long Pass ->  73
+Power Long Shot ->  75
+Tackling ->  74  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  59
+Dribble ->  73
+
+###### For() ######
+Attacking Finishing ->  47
+Power Long Shot ->  75
+Attacking Volleys ->  31
+Attacking Heading ->  66
+Tackling ->  74  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  73
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  8
@@ -208,178 +278,108 @@ Goal Keeping Positioning ->  12
 Goal Keeping Reflexes ->  13 
 =================================================
 
-###### Player Type: MIDFIELDER  ######
-Player Name ->  Morgan Schneiderlin
-Club Name ->  Everton
-Attacking FK Accuracy ->  61
+###### Player Type: FORWARD  ######
+Player Name ->  Jordan Ayew
+Club Name ->  Aston Villa
+Attacking FK Accuracy ->  71
 
 ###### Def() ######
-Short Pass ->  86
-Long Pass ->  80
-Tackling ->  80  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  74
+Short Pass ->  76
+Long Pass ->  60
+Tackling ->  25  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  77
 
 ###### Mid() ######
-Short Pass ->  86
-Long Pass ->  80
-Power Long Shot ->  56
-Tackling ->  80  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  65
-Dribble ->  74
+Short Pass ->  76
+Long Pass ->  60
+Power Long Shot ->  75
+Tackling ->  25  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  70
+Dribble ->  77
 
 ###### For() ######
-Attacking Finishing ->  61
-Power Long Shot ->  56
-Attacking Volleys ->  56
-Attacking Heading ->  71
-Tackling ->  80  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  74
+Attacking Finishing ->  77
+Power Long Shot ->  75
+Attacking Volleys ->  74
+Attacking Heading ->  77
+Tackling ->  25  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  77
 
 ###### Goal Keeping Stats ######
 Goal Keeping Diving ->  6
-Goal Keeping Handling ->  11
-Goal Keeping Kicking ->  12
-Goal Keeping Positioning ->  14
-Goal Keeping Reflexes ->  7 
-=================================================
-
-###### Player Type: MIDFIELDER  ######
-Player Name ->  Leighton Baines
-Club Name ->  Everton
-Attacking FK Accuracy ->  82
-
-###### Def() ######
-Short Pass ->  81
-Long Pass ->  74
-Tackling ->  79  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  78
-
-###### Mid() ######
-Short Pass ->  81
-Long Pass ->  74
-Power Long Shot ->  75
-Tackling ->  79  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  86
-Dribble ->  78
-
-###### For() ######
-Attacking Finishing ->  63
-Power Long Shot ->  75
-Attacking Volleys ->  63
-Attacking Heading ->  74
-Tackling ->  79  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  78
-
-###### Goal Keeping Stats ######
-Goal Keeping Diving ->  8
-Goal Keeping Handling ->  15
-Goal Keeping Kicking ->  10
-Goal Keeping Positioning ->  13
-Goal Keeping Reflexes ->  12 
-=================================================
-
-###### Player Type: MIDFIELDER  ######
-Player Name ->  Tom Davies
-Club Name ->  Everton
-Attacking FK Accuracy ->  55
-
-###### Def() ######
-Short Pass ->  79
-Long Pass ->  71
-Tackling ->  58  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  73
-
-###### Mid() ######
-Short Pass ->  79
-Long Pass ->  71
-Power Long Shot ->  56
-Tackling ->  58  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  66
-Dribble ->  73
-
-###### For() ######
-Attacking Finishing ->  64
-Power Long Shot ->  56
-Attacking Volleys ->  40
-Attacking Heading ->  52
-Tackling ->  58  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  73
-
-###### Goal Keeping Stats ######
-Goal Keeping Diving ->  11
-Goal Keeping Handling ->  12
-Goal Keeping Kicking ->  9
-Goal Keeping Positioning ->  14
-Goal Keeping Reflexes ->  10 
-=================================================
-
-###### Player Type: MIDFIELDER  ######
-Player Name ->  Gylfi Þór Sigurðsson
-Club Name ->  Everton
-Attacking FK Accuracy ->  89
-
-###### Def() ######
-Short Pass ->  84
-Long Pass ->  78
-Tackling ->  55  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  79
-
-###### Mid() ######
-Short Pass ->  84
-Long Pass ->  78
-Power Long Shot ->  84
-Tackling ->  55  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  86
-Dribble ->  79
-
-###### For() ######
-Attacking Finishing ->  81
-Power Long Shot ->  84
-Attacking Volleys ->  75
-Attacking Heading ->  60
-Tackling ->  55  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  79
-
-###### Goal Keeping Stats ######
-Goal Keeping Diving ->  13
 Goal Keeping Handling ->  8
-Goal Keeping Kicking ->  10
-Goal Keeping Positioning ->  15
-Goal Keeping Reflexes ->  12 
+Goal Keeping Kicking ->  7
+Goal Keeping Positioning ->  16
+Goal Keeping Reflexes ->  8 
 =================================================
 
 ###### Player Type: FORWARD  ######
-Player Name ->  Wayne Mark Rooney
-Club Name ->  Everton
-Attacking FK Accuracy ->  81
+Player Name ->  Gabriel Imuetinyan Agbonlahor
+Club Name ->  Aston Villa
+Attacking FK Accuracy ->  46
 
 ###### Def() ######
-Short Pass ->  81
-Long Pass ->  82
-Tackling ->  37  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  73
+Short Pass ->  70
+Long Pass ->  54
+Tackling ->  20  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  76
 
 ###### Mid() ######
-Short Pass ->  81
-Long Pass ->  82
-Power Long Shot ->  79
-Tackling ->  37  **This should be weighted tackle metrics, ignore for now!
-Attacking Crossing ->  78
-Dribble ->  73
+Short Pass ->  70
+Long Pass ->  54
+Power Long Shot ->  73
+Tackling ->  20  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  70
+Dribble ->  76
 
 ###### For() ######
-Attacking Finishing ->  80
-Power Long Shot ->  79
-Attacking Volleys ->  83
-Attacking Heading ->  75
-Tackling ->  37  **This should be weighted tackle metrics, ignore for now!
-Dribble ->  73
+Attacking Finishing ->  75
+Power Long Shot ->  73
+Attacking Volleys ->  66
+Attacking Heading ->  76
+Tackling ->  20  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  76
 
 ###### Goal Keeping Stats ######
-Goal Keeping Diving ->  10
+Goal Keeping Diving ->  12
+Goal Keeping Handling ->  6
+Goal Keeping Kicking ->  11
+Goal Keeping Positioning ->  7
+Goal Keeping Reflexes ->  9 
+=================================================
+
+###### Player Type: FORWARD  ######
+Player Name ->  Scott Sinclair
+Club Name ->  Aston Villa
+Attacking FK Accuracy ->  75
+
+###### Def() ######
+Short Pass ->  68
+Long Pass ->  49
+Tackling ->  28  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  82
+
+###### Mid() ######
+Short Pass ->  68
+Long Pass ->  49
+Power Long Shot ->  65
+Tackling ->  28  **This should be weighted tackle metrics, ignore for now!
+Attacking Crossing ->  72
+Dribble ->  82
+
+###### For() ######
+Attacking Finishing ->  73
+Power Long Shot ->  65
+Attacking Volleys ->  65
+Attacking Heading ->  69
+Tackling ->  28  **This should be weighted tackle metrics, ignore for now!
+Dribble ->  82
+
+###### Goal Keeping Stats ######
+Goal Keeping Diving ->  13
 Goal Keeping Handling ->  11
-Goal Keeping Kicking ->  13
-Goal Keeping Positioning ->  8
-Goal Keeping Reflexes ->  7 
+Goal Keeping Kicking ->  10
+Goal Keeping Positioning ->  13
+Goal Keeping Reflexes ->  15 
 =================================================
 

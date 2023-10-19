@@ -1,0 +1,11 @@
+AtkKep = [pos[C] == 1]Kep_1({}, {}, C);
+
+AtkDef = [pos[R] == 1]Def({}, {}, {}, {}, R) [] [pos[CR] == 1]Def({}, {}, {}, {}, CR) [] [pos[CL] == 1]Def({}, {}, {}, {}, CL) [] [pos[L] == 1]Def({}, {}, {}, {}, L);
+
+AtkMid = [pos[RL] == 1]Mid({}, {}, {}, {}, {}, {}, RL) [] [pos[C] == 1]Mid({}, {}, {}, {}, {}, {}, C) [] [pos[LR] == 1]Mid({}, {}, {}, {}, {}, {},LR);
+
+AtkFor = [pos[RL] == 1]For({}, {}, {}, {}, {}, {}, {}, {}, RL) [] [pos[C] == 1]For({}, {}, {}, {}, {}, {}, {}, {}, C) [] [pos[LR] == 1]For({}, {}, {}, {}, {}, {}, {}, {}, LR);
+
+AtkForMidField = [pos[R] == 1 || pos[CR] == 1]Mid({}, {}, {}, {}, {}, {}, RL) [] [pos[CL] == 1 || pos[CR] == 1]Mid({}, {}, {}, {}, {}, {}, C) [] [pos[L] == 1 || pos[CL] == 1]Mid({}, {}, {}, {}, {}, {}, LR);
+
+DefKep = [pos[C] == 1]Kep_2({}, C);

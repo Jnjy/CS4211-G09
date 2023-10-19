@@ -1,0 +1,11 @@
+#define Goal0 danger <= 0;
+#define Goal1 danger <= 1;
+#define Goal2 danger <= 2;
+#define Goal3 danger <= 3;
+#define Goal4 danger <= 4;
+#assert AtkKep deadlockfree;
+#assert AtkKep |= F G Goal0 with prob;
+#assert AtkKep |= F G Goal1 with prob;
+#assert AtkKep |= F G Goal2 with prob;
+#assert AtkKep |= F G Goal3 with prob;
+#assert AtkKep |= F G Goal4 with prob;
