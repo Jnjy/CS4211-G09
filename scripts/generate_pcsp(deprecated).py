@@ -13,7 +13,7 @@ def generate_pcsp(match_id, side):
     ball_receive_positions_and_player_actions = f"{file_path}/ball_receive_positions_and_player_actions.txt"
     soccer_field_grid = f"{file_path}/grids/Grid-{formation}.txt"
     probabilities = f"{file_path}/probabilities/{formation}.txt"
-    home_stats, away_stats = read_match_and_generate_stats(match_id, "20152016")
+    home_stats, away_stats, home_lineup, away_lineup = read_match_and_generate_stats(match_id, "20152016")
     placeholder_values = away_stats + [home_stats[0],]
     print(placeholder_values)
 
@@ -48,7 +48,7 @@ def generate_pcsp(match_id, side):
 def main():
     arguments = sys.argv[1:]
     if len(arguments) < 2:
-        print("Usage -> python3 generate_pcsp.py <match_id> away")
+        print("Usage -> python3 generate_pcsp(deprecated).py <match_id> away")
         return
     generate_pcsp(arguments[0], arguments[1])
 
