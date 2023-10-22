@@ -1,7 +1,6 @@
 import sys
 from match_stats import read_match_and_generate_stats
 
-
 def generate_pcsp(match_id, side):
     team_side = "away"
     if side != "away":
