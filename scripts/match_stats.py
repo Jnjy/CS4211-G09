@@ -3,8 +3,8 @@ import sys
 import player_stats
 
 
-def get_match_stats_by_id(file_path, match_id):
-    df = pd.read_csv(file_path)
+def get_match_stats_by_id(df, match_id):
+    # df = pd.read_csv(file_path, engine='pyarrow')
     url = f'https://www.premierleague.com/match/{match_id}'
     df = df[df['match_url'] == url]
     home_sofifa_ids = list(int(float(x)) for x in df['home_xi_sofifa_ids'].values[0].split(','))
@@ -12,8 +12,8 @@ def get_match_stats_by_id(file_path, match_id):
     return home_sofifa_ids, away_sofifa_ids
 
 
-def group_players_by_lineup(file_path, match_id):
-    df = pd.read_csv(file_path)
+def group_players_by_lineup(df, match_id):
+    # df = pd.read_csv(file_path, engine='pyarrow')
     url = f'https://www.premierleague.com/match/{match_id}'
     df = df[df['match_url'] == url]
     home_line_up, away_line_up = process_lineup(df['home_formation'].values[0]), process_lineup(
@@ -24,24 +24,30 @@ def group_players_by_lineup(file_path, match_id):
 
 def process_lineup(lineup):
     if len(lineup.split('-')) != 1:
-        return list(int(x) for x in lineup.split('-'))
+        result = list(int(x) for x in lineup.split('-'))
+        if 0 in result:
+            result.remove(0)
+        return result
     else:
         result = []
         arr = lineup.split('/')
         result += list(int(x) for x in arr[:-1])
         result.append(int(arr[-1]) % 1000)
+        if 0 in result:
+            result.remove(0)
         return result
 
 
 def read_match_and_generate_stats(match_id, year):
     file_path = f"./datasets/matches/epl_matches_{year}.csv"
-    home_ids, away_ids = get_match_stats_by_id(file_path, match_id)
-    h_lineup, a_lineup = group_players_by_lineup(file_path, match_id)
+    df = pd.read_csv(file_path, engine='pyarrow')
+    home_ids, away_ids = get_match_stats_by_id(df, match_id)
+    h_lineup, a_lineup = group_players_by_lineup(df, match_id)
 
     # Start getting player stats
     home_stats = player_stats.get_player_stats_by_ids(year, home_ids, is_away_team=False, lineup=h_lineup)
     away_stats = player_stats.get_player_stats_by_ids(year, away_ids, is_away_team=True, lineup=a_lineup)
-    return home_stats, away_stats
+    return home_stats, away_stats, h_lineup, a_lineup
 
 
 # Run from project root

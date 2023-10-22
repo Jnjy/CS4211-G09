@@ -51,23 +51,24 @@ var defKepPos = [-1(6), 0, 0, 0, 1, 0, 0, 0, -1(6)];
 // For example keepers can only ShortPass or LongPass
 // Here 64, 64 represents the FIFA ShortPass and LongPass ratings for this particular player 
 // Goal Keeper for AWAY -> Bradley Guzwan
-AtkKep = [pos[C] == 1]Kep_1(64, 64, C); // This (64, 64) is probably from gk_kicking ?
+__atkKepStats__
 
 
 // Here for the defenders, the first 3 parameters are with respect to the ShortPass, LongPass, and prob. to lose the ball respectively 
 // The prob. to lose the ball for the attacking team's defenders was calculated based on the defending team forward's player ratings 
 // In particular, the probability to lose the ball was a weighted combination of the standing tackle, sliding tackle, and interception FIFA player ratings of the forwards
-AtkDef = [pos[R] == 1]Def(73, 71, 38, 82, R) [] [pos[CR] == 1]Def(68, 63, 38, 82, CR) [] [pos[CL] == 1]Def(68, 63, 38, 82, CL) [] [pos[L] == 1]Def(72, 59, 38, 82, L);
+__atkDefStats__
 
 // Similar to defenders, midfielders and forwards have their own specific parameters
 // See their processes below for more information on what those parameters are
 // The prob. to lose for the attacking team's midfielders is based on the defending team's midfielders
 // The prob. to lose for the attacking team's forwards is based on the defending team's defenders
 
-AtkMid = [pos[RL] == 1]Mid(79, 76, 74, 59, 73, 79, RL) [] [pos[C] == 1]Mid(83, 80, 57, 59, 82, 79, C) [] [pos[LR] == 1]Mid(78, 73, 75, 59, 59, 79,LR); // HC: Added fake ratings for m here in Mid() process TODO: use legit rating and test
+__atkMid1Stats__
+__atkMid2Stats__
+__atkMid3Stats__
 // For() takes in r_closeShot, r_longShot, r_volley, r_header, r_tackled, r_dribble
-AtkFor = [pos[RL] == 1]For(77, 75, 74, 77, 75, 90, 85, 85, RL) [] [pos[C] == 1]For(75, 73, 66, 76, 75, 90, 85, 85, C) [] [pos[LR] == 1]For(73, 65, 65, 69, 75, 90, 85, 85, LR);
-AtkForMidField = [pos[R] == 1 || pos[CR] == 1]Mid(79, 76, 74, 59, 73, 79, RL) [] [pos[CL] == 1 || pos[CR] == 1]Mid(83, 80, 57, 59, 82, 79, C) [] [pos[L] == 1 || pos[CL] == 1]Mid(78, 73, 75, 59, 59, 79,LR);
+__atkForStats__
 
 /*
 TO CLARIFY: Why is tackle all 59?
@@ -78,7 +79,7 @@ Adding state - midfielder in forward position brings the prob back down to befor
 ///////////// HOME TEAM PLAYERS (Defending Team) /////////////
 // Home team defenders, midfielders and forwards are already implicitly "defending" via the prob. to lose the ball parameter
 // HOME Goal Keeper -> Artur Boruc
-DefKep = [pos[C] == 1]Kep_2(72, C); // This is from gk_handling
+__defKepStats__
 
 ///////////// Individual Positions /////////////
 // There is a guard to every action (e.g., shortPass) a player can take
@@ -117,9 +118,6 @@ Mid(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [at
 } [] [atkForPos[RL] == 1 || atkForPos[LR] == 1]attackCross -> pcase { // changed, discuss see if correct
 	r_cross: cross -> UpdatePos(p, AC); AtkFor // cross -> Attack forwards. // TODO: UpdatePos process for cross
 	r_dribble - r_tackled: tackled{danger = 3;} -> Skip
-} [] [defKepPos[C] == 1]dribbleThrough -> pcase {
-	r_dribble: dribble -> UpdatePos(p, DR); AtkForMidField
-	r_tackled: tackled{danger = 3;} -> Skip
 } [] [atkDefPos[p-2] == 1 || atkDefPos[p-1] == 1 || atkDefPos[p] == 1 || atkDefPos[p+1] == 1 || atkDefPos[p+2] == 1]shortPass -> pcase {
 	r_shortPass: shortPassBack -> UpdatePos(p, SP); AtkDef
 	r_dribble - r_tackled: intercepted{danger = 3;} -> Skip
