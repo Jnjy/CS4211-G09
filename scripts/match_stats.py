@@ -35,14 +35,24 @@ def process_lineup(lineup):
         return result
 
 
-def read_match_and_generate_stats(df, match_id, year):
-    home_ids, away_ids = get_match_stats_by_id(df, match_id)
-    h_lineup, a_lineup = group_players_by_lineup(df, match_id)
+def read_match_and_generate_stats(df, match_id, year, team):
+    assert team in ('away', 'home'), "team has to be either 'away' or 'home' !"
+    if team == 'away':
+        home_ids, away_ids = get_match_stats_by_id(df, match_id)
+        h_lineup, a_lineup = group_players_by_lineup(df, match_id)
 
-    # Start getting player stats
-    home_stats = player_stats.get_player_stats_by_ids(year, home_ids, is_away_team=False, lineup=h_lineup)
-    away_stats = player_stats.get_player_stats_by_ids(year, away_ids, is_away_team=True, lineup=a_lineup)
-    return home_stats, away_stats, h_lineup, a_lineup
+        # Start getting player stats
+        home_stats = player_stats.get_player_stats_by_ids(year, home_ids, is_away_team=False, lineup=h_lineup)
+        away_stats = player_stats.get_player_stats_by_ids(year, away_ids, is_away_team=True, lineup=a_lineup)
+        return home_stats, away_stats, h_lineup, a_lineup
+    if team == 'home':
+        away_ids, home_ids = get_match_stats_by_id(df, match_id)
+        a_lineup, h_lineup = group_players_by_lineup(df, match_id)
+
+        # Start getting player stats
+        home_stats = player_stats.get_player_stats_by_ids(year, home_ids, is_away_team=False, lineup=h_lineup)
+        away_stats = player_stats.get_player_stats_by_ids(year, away_ids, is_away_team=True, lineup=a_lineup)
+        return home_stats, away_stats, h_lineup, a_lineup
 
 
 # Run from project root

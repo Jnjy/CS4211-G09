@@ -31,7 +31,7 @@ AtkKep = [pos[C] == 1]Kep_1(64, 64, C);
 AtkDef = [pos[L] == 1]Def(73, 67, 84, 74, L) [] [pos[CL] == 1]Def(77, 81, 83, 61, CL) [] [pos[CR] == 1]Def(75, 74, 81, 66, CR) [] [pos[R] == 1]Def(72, 65, 82, 76, R);
 
 AtkMid1 = Skip;
-AtkMid2 = [pos[CL] == 1]Mid2(72, 76, 71, 70, 67, 59, CL) [] [pos[CR] == 1]Mid2(71, 65, 67, 51, 53, 71, CR);
+AtkMid2 = Skip;
 AtkMid3 = [pos[LR] == 1]Mid3(81, 71, 82, 26, 75, 87, LR) [] [pos[C] == 1]Mid3(84, 79, 72, 64, 65, 85, C) [] [pos[RL] == 1]Mid3(84, 82, 77, 22, 84, 84, RL);
 
 AtkFor = [pos[C] == 1]For(82, 71, 67, 80, 38, 76, 72, 63, C);

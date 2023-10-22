@@ -75,8 +75,8 @@ def generate_positions_for_stats(n):  # Generates 0001000 -> [C]
     return positions
 
 
-def generate_stats_template(df, match_id, year):
-    home_stats, away_stats, home_lineup, away_lineup = read_match_and_generate_stats(df, match_id, year)
+def generate_stats_template(df, match_id, year, team):
+    home_stats, away_stats, home_lineup, away_lineup = read_match_and_generate_stats(df, match_id, year, team)
     assert len(away_lineup) in (3, 4, 5)
     atkDefLen, atkMid1Len, atkMid2Len, atkMid3Len, atkForLen = -1, -1, -1, -1, -1
     if len(away_lineup) == 3:
@@ -103,11 +103,7 @@ def generate_stats_template(df, match_id, year):
                        f'{away_stats.pop(0)}, {pos_val}){" [] " if idx < atkDefLen - 1 else ";"}'
 
     # AtkMid1, AtkMid2, AtkMid3
-    atkMidStatsList = [
-        'AtkMid1 = ',
-        'AtkMid2 = ',
-        'AtkMid3 = '
-    ]
+    atkMidStatsList = ['', '', '']
     atkMidLenList = [atkMid1Len, atkMid2Len, atkMid3Len]
     for idx, atkMidI in enumerate(atkMidStatsList):
         if idx == 1 and atkMid2Len == -1:
@@ -138,35 +134,37 @@ def replace_file_content(df, match_id, team, grid_formation, year_str):
     # Grids
     data = data.replace(soccer_field_grid["ATKDEFPOS"], str(grid_formation[0]).replace("'-1(6)'", '-1(6)'))
 
+    player_stats = generate_stats_template(df, match_id, year_str, team)
     mid_grids = grid_formation[1]
-    print("Mid Grids -> ", mid_grids)
     blank_grid = "[-1(6), 0, 0, 0, 0, 0, 0, 0, -1(6)]"
-    data = data.replace(soccer_field_grid["ATKMID1POS"], str(mid_grids[0]).replace("'-1(6)'", '-1(6)'))
     if len(mid_grids) == 1:
+        data = data.replace(soccer_field_grid["ATKMID1POS"], blank_grid)
         data = data.replace(soccer_field_grid["ATKMID2POS"], blank_grid)
-        data = data.replace(soccer_field_grid["ATKMID3POS"], blank_grid)
+        data = data.replace(soccer_field_grid["ATKMID3POS"], str(mid_grids[0]).replace("'-1(6)'", '-1(6)'))
+        data = data.replace(player_types['AtkMid1'], 'Skip;')
+        data = data.replace(player_types['AtkMid2'], 'Skip;')
+        data = data.replace(player_types['AtkMid3'], player_stats[2][0].replace('Mid1', 'Mid3'))
     if len(mid_grids) == 2:
-        data = data.replace(soccer_field_grid["ATKMID2POS"], str(mid_grids[1]).replace("'-1(6)'", '-1(6)'))
-        data = data.replace(soccer_field_grid["ATKMID3POS"], blank_grid)
+        data = data.replace(soccer_field_grid["ATKMID1POS"], blank_grid)
+        data = data.replace(soccer_field_grid["ATKMID2POS"], str(mid_grids[0]).replace("'-1(6)'", '-1(6)'))
+        data = data.replace(soccer_field_grid["ATKMID3POS"], str(mid_grids[1]).replace("'-1(6)'", '-1(6)'))
+        data = data.replace(player_types['AtkMid1'], 'Skip;')
+        data = data.replace(player_types['AtkMid2'], player_stats[2][0].replace('Mid1', 'Mid2'))
+        data = data.replace(player_types['AtkMid3'], player_stats[2][1].replace('Mid2', 'Mid3'))
+
     if len(mid_grids) == 3:
+        data = data.replace(soccer_field_grid["ATKMID1POS"], str(mid_grids[0]).replace("'-1(6)'", '-1(6)'))
+        data = data.replace(soccer_field_grid["ATKMID2POS"], str(mid_grids[1]).replace("'-1(6)'", '-1(6)'))
         data = data.replace(soccer_field_grid["ATKMID3POS"], str(mid_grids[2]).replace("'-1(6)'", '-1(6)'))
+        data = data.replace(player_types['AtkMid1'], player_stats[2][0])
+        data = data.replace(player_types['AtkMid2'], player_stats[2][1])
+        data = data.replace(player_types['AtkMid3'], player_stats[2][2])
 
     data = data.replace(soccer_field_grid["ATKFORPOS"], str(grid_formation[2]).replace("'-1(6)'", '-1(6)'))
 
-    # Stats
-    player_stats = generate_stats_template(df, match_id, year_str)
     data = data.replace(player_types['AtkKep'], player_stats[0])
     data = data.replace(player_types['AtkDef'], player_stats[1])
-    data = data.replace(player_types['AtkMid1'], player_stats[2][0])
-    if player_stats[2][1] != 'AtkMid2 = ':
-        data = data.replace(player_types['AtkMid2'], player_stats[2][1])
-    else:
-        data = data.replace(player_types['AtkMid2'], 'AtkMid2 = Skip;')
-    if player_stats[2][2] != 'AtkMid3 = ':
-        data = data.replace(player_types['AtkMid3'], player_stats[2][2])
-    else:
-        data = data.replace(player_types['AtkMid3'], 'AtkMid3 = Skip;')
-
+    # AtkMid1-3 is on top
     data = data.replace(player_types['AtkFor'], player_stats[3])
     data = data.replace(player_types['DefKep'], player_stats[4])
 
