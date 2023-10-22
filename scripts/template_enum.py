@@ -1,6 +1,8 @@
 soccer_field_grid = {
     "ATKDEFPOS": "__atkDefPos__",
-    "ATKMIDPOS": "__atkMidPos__",
+    "ATKMID1POS": "__atkMid1Pos__",
+    "ATKMID2POS": "__atkMid2Pos__",
+    "ATKMID3POS": "__atkMid3Pos__",
     "ATKFORPOS": "__atkForPos__",
 }
 

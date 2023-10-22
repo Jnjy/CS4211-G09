@@ -115,7 +115,7 @@ def generate_stats_template(df, match_id, year):
         if idx == 2 and atkMid3Len == -1:
             break
         for j, pos_val in enumerate(generate_positions_for_stats(atkMidLenList[idx])):
-            atkMidStatsList[idx] += f'[pos[{pos_val}] == 1]Mid({away_stats.pop(0)}, {away_stats.pop(0)}, ' \
+            atkMidStatsList[idx] += f'[pos[{pos_val}] == 1]Mid{idx+1}({away_stats.pop(0)}, {away_stats.pop(0)}, ' \
                                    f'{away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
                                    f'{away_stats.pop(0)}, {pos_val}){" [] " if j < atkMidLenList[idx] - 1 else ";"}'
 
@@ -135,17 +135,38 @@ def replace_file_content(df, match_id, team, grid_formation, year_str):
     template_file.close()
 
     result_file = open(f'./pcsp_files/{match_id}_{team}.pcsp', 'wt')
-    data = data.replace(soccer_field_grid["ATKDEFPOS"], str(grid_formation[0]))
-    data = data.replace(soccer_field_grid["ATKMIDPOS"], str(grid_formation[1]))
-    data = data.replace(soccer_field_grid["ATKFORPOS"], str(grid_formation[2]))
+    # Grids
+    data = data.replace(soccer_field_grid["ATKDEFPOS"], str(grid_formation[0]).replace("'-1(6)'", '-1(6)'))
+
+    mid_grids = grid_formation[1]
+    print("Mid Grids -> ", mid_grids)
+    blank_grid = "[-1(6), 0, 0, 0, 0, 0, 0, 0, -1(6)]"
+    data = data.replace(soccer_field_grid["ATKMID1POS"], str(mid_grids[0]).replace("'-1(6)'", '-1(6)'))
+    if len(mid_grids) == 1:
+        data = data.replace(soccer_field_grid["ATKMID2POS"], blank_grid)
+        data = data.replace(soccer_field_grid["ATKMID3POS"], blank_grid)
+    if len(mid_grids) == 2:
+        data = data.replace(soccer_field_grid["ATKMID2POS"], str(mid_grids[1]).replace("'-1(6)'", '-1(6)'))
+        data = data.replace(soccer_field_grid["ATKMID3POS"], blank_grid)
+    if len(mid_grids) == 3:
+        data = data.replace(soccer_field_grid["ATKMID3POS"], str(mid_grids[2]).replace("'-1(6)'", '-1(6)'))
+
+    data = data.replace(soccer_field_grid["ATKFORPOS"], str(grid_formation[2]).replace("'-1(6)'", '-1(6)'))
+
+    # Stats
     player_stats = generate_stats_template(df, match_id, year_str)
     data = data.replace(player_types['AtkKep'], player_stats[0])
     data = data.replace(player_types['AtkDef'], player_stats[1])
     data = data.replace(player_types['AtkMid1'], player_stats[2][0])
     if player_stats[2][1] != 'AtkMid2 = ':
         data = data.replace(player_types['AtkMid2'], player_stats[2][1])
+    else:
+        data = data.replace(player_types['AtkMid2'], 'AtkMid2 = Skip;')
     if player_stats[2][2] != 'AtkMid3 = ':
         data = data.replace(player_types['AtkMid3'], player_stats[2][2])
+    else:
+        data = data.replace(player_types['AtkMid3'], 'AtkMid3 = Skip;')
+
     data = data.replace(player_types['AtkFor'], player_stats[3])
     data = data.replace(player_types['DefKep'], player_stats[4])
 

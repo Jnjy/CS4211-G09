@@ -40,14 +40,16 @@ enum {SP, LP, LS, FI, VO, HD, AC, DR};
 // 0 means there is no player in that position
 var atkKepPos = [-1(6), 0, 0, 0, 1, 0, 0, 0, -1(6)];
 var atkDefPos = __atkDefPos__;
-var atkMidPos = __atkMidPos__;
+var atkMid1Pos = __atkMid1Pos__;
+var atkMid2Pos = __atkMid2Pos__;
+var atkMid3Pos = __atkMid3Pos__;
 var atkForPos = __atkForPos__;
 var defKepPos = [-1(6), 0, 0, 0, 1, 0, 0, 0, -1(6)];
 
 
 ///////////// AWAY TEAM PLAYERS (Attacking Team) /////////////
 // The parameters represent the probabilities specific to the player
-// The gurad only allows eligible players to get the ball, see Individual Positions section for more info
+// The guard only allows eligible players to get the ball, see Individual Positions section for more info
 
 // For example keepers can only ShortPass or LongPass
 // Here 64, 64 represents the FIFA ShortPass and LongPass ratings for this particular player 
