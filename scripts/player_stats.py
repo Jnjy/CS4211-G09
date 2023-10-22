@@ -4,7 +4,11 @@ import player_enum
 
 
 def get_player_stats_by_id(file_path, player_id):
-    df = pd.read_csv(file_path)
+    specific_player_columns = ['sofifa_id', 'attacking_short_passing', 'skill_long_passing', 'defending_sliding_tackle',
+                               'skill_dribbling', 'power_long_shots', 'attacking_crossing', 'attacking_finishing',
+                               'attacking_volleys', 'attacking_heading_accuracy', 'goalkeeping_kicking',
+                               'goalkeeping_handling']
+    df = pd.read_csv(file_path, engine='pyarrow', usecols=specific_player_columns)
     df = df[df['sofifa_id'] == player_id]
     return df
 

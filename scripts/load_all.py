@@ -75,8 +75,8 @@ def generate_positions_for_stats(n):  # Generates 0001000 -> [C]
     return positions
 
 
-def generate_stats_template(match_id, year):
-    home_stats, away_stats, home_lineup, away_lineup = read_match_and_generate_stats(match_id, year)
+def generate_stats_template(df, match_id, year):
+    home_stats, away_stats, home_lineup, away_lineup = read_match_and_generate_stats(df, match_id, year)
     assert len(away_lineup) in (3, 4, 5)
     atkDefLen, atkMid1Len, atkMid2Len, atkMid3Len, atkForLen = -1, -1, -1, -1, -1
     if len(away_lineup) == 3:
@@ -125,11 +125,11 @@ def generate_stats_template(match_id, year):
                        f'{away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
                        f'{away_stats.pop(0)}, {pos_val}){" [] " if idx < atkForLen - 1 else ";"}'
 
-    defKepStats = f'DefKep = [pos[C] == 1]Kep_2({home_stats.pop(0)}, {home_stats.pop(0)}, C);'
+    defKepStats = f'DefKep = [pos[C] == 1]Kep_2({home_stats.pop(0)}, C);'
     return atkKepStats, atkDefStats, atkMidStatsList, atkForStats, defKepStats
 
 
-def replace_file_content(match_id, team, grid_formation, year_str):
+def replace_file_content(df, match_id, team, grid_formation, year_str):
     template_file = open('./template.pcsp', 'rt')
     data = template_file.read()
     template_file.close()
@@ -138,7 +138,7 @@ def replace_file_content(match_id, team, grid_formation, year_str):
     data = data.replace(soccer_field_grid["ATKDEFPOS"], str(grid_formation[0]))
     data = data.replace(soccer_field_grid["ATKMIDPOS"], str(grid_formation[1]))
     data = data.replace(soccer_field_grid["ATKFORPOS"], str(grid_formation[2]))
-    player_stats = generate_stats_template(match_id, year_str)
+    player_stats = generate_stats_template(df, match_id, year_str)
     data = data.replace(player_types['AtkKep'], player_stats[0])
     data = data.replace(player_types['AtkDef'], player_stats[1])
     data = data.replace(player_types['AtkMid1'], player_stats[2][0])
@@ -156,28 +156,30 @@ def replace_file_content(match_id, team, grid_formation, year_str):
 
 def __main__():
     matches_dir = "./datasets/matches/"
+    specific_match_columns = ['match_url', 'home_xi_sofifa_ids', 'away_xi_sofifa_ids', 'home_formation',
+                              'away_formation', 'home_sequence', 'away_sequence']
     for file_loc in os.listdir(matches_dir):
         match_file = matches_dir + file_loc
         year = file_loc.split('_')
         year_str = year[-1].split('.csv')[0]
-        df = pd.read_csv(match_file)
+        df = pd.read_csv(match_file, engine='pyarrow', usecols=specific_match_columns)
 
         pcsp_path = './pcsp_files'
         if not os.path.exists(pcsp_path):
             os.mkdir(pcsp_path)
 
         i = 0
-        while (i < df.shape[0]):
+        while i < df.shape[0]:
             team_arr = ["home", "away"]
+            record = df.iloc[i]
             for team in team_arr:
-                record = df.iloc[i]
                 field_grid = get_soccer_field_grid(record, team)
 
                 match_url = record.loc["match_url"]
                 match_url = match_url.split('/match/')
                 match_id = match_url[-1]
 
-                replace_file_content(match_id, team, field_grid, year_str)
+                replace_file_content(record, match_id, team, field_grid, year_str)
 
             i = i + 1
 
