@@ -12,7 +12,7 @@ if (Test-Path $outputDirectory) {
 }
 
 $outputFile = "./data_output/out.txt"
-$pattern = "\[([\d.]+), ([\d.]+)\]"
+$pattern = "\[(-?\d+\.\d+), (-?\d+\.\d+)\]"
 
 $yearRangeArray = @("1516", "1718", "1819", "1920", "2021")
 foreach ($item in $yearRangeArray) {
@@ -58,6 +58,10 @@ foreach ($pcspFile in Get-ChildItem -Path $pcspDirectory -Filter *.pcsp) {
 
     # Run the command and capture the output
     .\PAT340\PAT3.Console.exe -pcsp $pcspFile.FullName ".$outputFile"
+    $errLogFilePath = "./error_log.txt"
+    if ($LASTEXITCODE -ne 0) {
+        "PAT Error at -> $strValueMatchId,https://www.premierleague.com/match/$($strValueMatchId),$team" | Out-File -FilePath $errLogFilePath
+    }
 
     # Check if the file exists and read the specific line
     if (Test-Path $outputFile) {
@@ -66,6 +70,10 @@ foreach ($pcspFile in Get-ChildItem -Path $pcspDirectory -Filter *.pcsp) {
         if ($assertionValidLine -match $pattern) {
             $probabilityRange =
                 "$strValueMatchId,https://www.premierleague.com/match/$($strValueMatchId),$team,$($Matches[1]),$($Matches[2])"
+            $probabilityRange | Out-File -Append -FilePath $resultsCsvFile
+        } else {
+            $probabilityRange =
+            "$strValueMatchId,https://www.premierleague.com/match/$($strValueMatchId),$team,error,error"
             $probabilityRange | Out-File -Append -FilePath $resultsCsvFile
         }
     } else {
