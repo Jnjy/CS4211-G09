@@ -116,6 +116,8 @@ def generate_stats_template(df, match_id, year, team):
                                    f'{away_stats.pop(0)}, {pos_val}){" [] " if j < atkMidLenList[idx] - 1 else ";"}'
 
     atkForStats = 'AtkFor = '
+    if atkForLen == 0:
+        atkForStats += 'Skip;'
     for idx, pos_val in enumerate(generate_positions_for_stats(atkForLen)):
         atkForStats += f'[pos[{pos_val}] == 1]For({away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
                        f'{away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
