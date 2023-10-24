@@ -16,7 +16,7 @@ $pattern = "\[(-?\d+\.\d+), (-?\d+\.\d+)\]"
 
 $yearRangeArray = @("1516", "1718", "1819", "1920", "2021")
 foreach ($item in $yearRangeArray) {
-    "match_id,match_url,team,low,high" | Out-File -FilePath "$outputDirectory/$item.csv"
+    "match_id,match_url,team,low,high" | Out-File -FilePath "$outputDirectory/$item.csv" -Encoding utf8
 }
 
 # Loop through .pcsp files in the directory
@@ -60,7 +60,7 @@ foreach ($pcspFile in Get-ChildItem -Path $pcspDirectory -Filter *.pcsp) {
     .\PAT340\PAT3.Console.exe -pcsp $pcspFile.FullName ".$outputFile"
     $errLogFilePath = "./error_log.txt"
     if ($LASTEXITCODE -ne 0) {
-        "PAT Error at -> $strValueMatchId,https://www.premierleague.com/match/$($strValueMatchId),$team" | Out-File -FilePath $errLogFilePath
+        "PAT Error at -> $strValueMatchId,https://www.premierleague.com/match/$($strValueMatchId),$team" | Out-File -FilePath $errLogFilePath -Encoding utf8
     }
 
     # Check if the file exists and read the specific line
@@ -70,16 +70,16 @@ foreach ($pcspFile in Get-ChildItem -Path $pcspDirectory -Filter *.pcsp) {
         if ($assertionValidLine -match $pattern) {
             $probabilityRange =
                 "$strValueMatchId,https://www.premierleague.com/match/$($strValueMatchId),$team,$($Matches[1]),$($Matches[2])"
-            $probabilityRange | Out-File -Append -FilePath $resultsCsvFile
+            $probabilityRange | Out-File -Append -FilePath $resultsCsvFile -Encoding utf8
         } else {
             $probabilityRange =
             "$strValueMatchId,https://www.premierleague.com/match/$($strValueMatchId),$team,error,error"
-            $probabilityRange | Out-File -Append -FilePath $resultsCsvFile
+            $probabilityRange | Out-File -Append -FilePath $resultsCsvFile -Encoding utf8
         }
     } else {
         Write-Output "Error: File $outputFile not found."
         $probabilityRange =
             "$strValueMatchId,https://www.premierleague.com/match/$($strValueMatchId),$team,error,error"
-        $probabilityRange | Out-File -Append -FilePath $resultsCsvFile
+        $probabilityRange | Out-File -Append -FilePath $resultsCsvFile -Encoding utf8
     }
 }
