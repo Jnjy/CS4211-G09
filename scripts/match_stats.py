@@ -22,16 +22,12 @@ def group_players_by_lineup(df, match_id):
 def process_lineup(lineup):
     if len(lineup.split('-')) != 1:
         result = list(int(x) for x in lineup.split('-'))
-        if 0 in result:
-            result.remove(0)
         return result
     else:
         result = []
         arr = lineup.split('/')
         result += list(int(x) for x in arr[:-1])
         result.append(int(arr[-1]) % 1000)
-        if 0 in result:
-            result.remove(0)
         return result
 
 
