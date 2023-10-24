@@ -3,7 +3,7 @@ import numpy as np
 
 
 def update_season_probabilities(year_range: int):
-    df_new = pd.read_csv(f"./betting_simulation/new_probabilities/{year_range}.csv")
+    df_new = pd.read_csv(f"./betting_simulation/original_probabilities/{year_range}.csv")
     df_generated_prob = pd.read_csv(f"./data_output/generated_probabilities/{year_range}.csv", encoding="utf-8")
     print(len(df_new), len(df_generated_prob))
     for index, row in df_generated_prob.iterrows():
@@ -20,7 +20,7 @@ def update_season_probabilities(year_range: int):
             df_new.loc[df_new['match_url'] == match_url, 'home_prob_softmax'] = softmax_val[0]
 
     print(len(df_new))
-    df_new.to_csv('1516.csv', index=False)
+    df_new.to_csv(f"./betting_simulation/new_probabilities/{year_range}.csv", mode='w', index=False)
 
 
 def softmax(x):
