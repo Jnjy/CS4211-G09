@@ -1,11 +1,19 @@
 # CS4211-G09
 
-## How to use the scripts to extract informatin on a player?
-1. Get the player sofifa_id
-2. In the project root directory, run `python ./scripts/player_stats.py ./datasets/ratings/epl_ratings_20152016.csv <player_id>`
-3. Unlike match stats, player stats will be printed to console.
+## Prerequisites
 
-## How to use the scripts to extract information on a match?
-1. Get the match id e.g. `12115`
-2. In the project root directory, run `python ./scripts/match_stats.py ./datasets/matches/epl_matches_20152016.csv 12115`
-3. Data of the match based on Home and Away teams will be output to the respective text files contained in `./data_output` folder.
+### PAT 3.4.0
+1. Download the executable PAT340 from [PAT-Process Analysis Toolkit](https://pat.comp.nus.edu.sg/?page_id=2660)
+2. Unzip and paste the PAT430 folder in project root folder
+
+## Steps
+1. Generate the pcsp files of the match datasets
+   1. In project root directory run `python3 ./scripts/load_all.py`
+   2. You should see that pcsp_files are being generated in `./pcsp_files`
+2. Run .pcsp files with PAT
+   1. In powershell terminal in the project root directory, run `get_probability`
+   2. You should observe that `./data_output/generated_probabilities` will have `<year_range>.csv` files generated
+
+#### WIP
+3. Run generate_new_probabilities.py script to generate new_probabilities (refer to betting_simulation)
+4. Run betting simulation script
