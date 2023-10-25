@@ -6,6 +6,7 @@ cleanup() {
 
     # Kill all background processes
     kill "$(jobs -p)"
+    kill "$PID1" "$PID2" "$PID3" "$PID4" "$PID5" "$PID6";
 
     echo "All processes terminated."
     exit 1
@@ -14,14 +15,17 @@ cleanup() {
 # Trap Ctrl+C and call the cleanup function
 trap cleanup SIGINT
 
-# Run the first script in the background
-./get_probability_15to17.sh &
+./get_probability_15to16.sh & PID1=$!
 
-# Run the second script in the background
-./get_probability_17to19.sh &
+./get_probability_16to17.sh & PID2=$!
 
-# Run the third script in the background
-./get_probability_19to21.sh &
+./get_probability_17to18.sh & PID3=$!
+
+./get_probability_18to19.sh & PID4=$!
+
+./get_probability_19to20.sh & PID5=$!
+
+./get_probability_20to21.sh & PID6=$!
 
 # Wait for all background jobs to finish
 wait

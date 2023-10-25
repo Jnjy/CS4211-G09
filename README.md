@@ -23,15 +23,17 @@
 #### Concurrent generation (Recommended!)
 - Three scripts will run concurrently to generate 15to17, 17to19, 19to21 PAT probability range.
 
-In bash terminal in root directory, run chmod for these 4 scripts
+In bash terminal in root directory, run chmod for these 6 scripts
 ```bash
-chmod +x ./get_probability_15to17.sh
-chmod +x ./get_probability_17to19.sh
-chmod +x ./get_probability_19to21.sh
-chmod +x ./get_probability_concurrent.sh
+chmod +x ./get_probability_15to16.sh
+chmod +x ./get_probability_16to17.sh
+chmod +x ./get_probability_17to18.sh
+chmod +x ./get_probability_18to19.sh
+chmod +x ./get_probability_19to20.sh
+chmod +x ./get_probability_20to21.sh
 ```
 Then, run `./get_probability_concurrent.sh`
-
+NOTE: It is okay to see not found errors, since indexes are ball parked (Set to way before the actual to prevent missing info)
 
 #### WIP
 3. Run generate_new_probabilities.py script to generate new_probabilities (refer to betting_simulation)

@@ -1,12 +1,11 @@
 #!/bin/bash
 
-lineNumber=22
 pcspDirectory="./pcsp_files"
 outputDirectory="./data_output/generated_probabilities"
-outputFile="./data_output/out2.txt"
+outputFile="./data_output/out1.txt"
 pattern="\[(-?[0-9]+\.[0-9]+), (-?[0-9]+\.[0-9]+)\]"
 
-yearRangeArray=("1920" "2021")
+yearRangeArray=("1617")
 
 for item in "${yearRangeArray[@]}"; do
     echo "match_id,match_url,team,low,high" > "$outputDirectory/$item.csv"
@@ -15,7 +14,7 @@ done
 # Store the list of files in an array
 pcspFiles=("$pcspDirectory"/*.pcsp)
 
-for ((i=3038; i<${#pcspFiles[@]}; i++)); do # Ball park the start index, there is a guard clause below
+for ((i=758; i<${#pcspFiles[@]}; i++)); do # Ball park the start index, there is a guard clause below
     pcspFile="${pcspFiles[$i]}"
     matchId=$(echo "$pcspFile" | grep -oE '[0-9]+')
     team=$(echo "$pcspFile" | awk -F'_' '{print $NF}' | cut -d'.' -f1)
@@ -23,16 +22,10 @@ for ((i=3038; i<${#pcspFiles[@]}; i++)); do # Ball park the start index, there i
 
 #    if ((matchId < 13000)); then
 #        yearCsvFile="1516.csv"
-#    elif ((matchId < 15000)); then
-#        yearCsvFile="1617.csv"
-#    elif ((matchId < 23000)); then
-#        yearCsvFile="1718.csv"
-#    elif ((matchId < 39000)); then
-#        yearCsvFile="1819.csv"
-    if ((matchId >= 39000 && matchId < 47000)); then
-        yearCsvFile="1920.csv"
-    elif ((matchId >= 47000 && matchId < 60000)); then
-        yearCsvFile="2021.csv"
+    if ((matchId >= 13000 && matchId < 15000)); then
+        yearCsvFile="1617.csv"
+    elif ((matchId >= 15000)); then
+        break
     fi
 
     if [[ -z $yearCsvFile ]]; then

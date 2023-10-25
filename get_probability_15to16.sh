@@ -1,44 +1,29 @@
 #!/bin/bash
 
-lineNumber=22
 pcspDirectory="./pcsp_files"
 outputDirectory="./data_output/generated_probabilities"
-outputFile="./data_output/out1.txt"
+outputFile="./data_output/out.txt"
 pattern="\[(-?[0-9]+\.[0-9]+), (-?[0-9]+\.[0-9]+)\]"
 
-yearRangeArray=("1718" "1819")
+yearRangeArray=("1516")
 
 for item in "${yearRangeArray[@]}"; do
     echo "match_id,match_url,team,low,high" > "$outputDirectory/$item.csv"
 done
 
-# Store the list of files in an array
-pcspFiles=("$pcspDirectory"/*.pcsp)
-
-for ((i=1519; i<${#pcspFiles[@]}; i++)); do # Ball park the start index, there is a guard clause below
-    pcspFile="${pcspFiles[$i]}"
+for pcspFile in "$pcspDirectory"/*.pcsp; do
     matchId=$(echo "$pcspFile" | grep -oE '[0-9]+')
     team=$(echo "$pcspFile" | awk -F'_' '{print $NF}' | cut -d'.' -f1)
     yearCsvFile=""
 
-#    if ((matchId < 13000)); then
-#        yearCsvFile="1516.csv"
-#    elif ((matchId < 15000)); then
-#        yearCsvFile="1617.csv"
-    if ((matchId >= 15000 && matchId < 23000)); then
-        yearCsvFile="1718.csv"
-    elif ((matchId >= 23000 && matchId < 39000)); then
-        yearCsvFile="1819.csv"
-    elif ((matchId >= 39000)); then
+    if ((matchId < 13000)); then
+        yearCsvFile="1516.csv"
+    elif ((matchId >= 13000)); then
         break
-#    elif ((matchId < 47000)); then
-#        yearCsvFile="1920.csv"
-#    elif ((matchId < 60000)); then
-#        yearCsvFile="2021.csv"
     fi
 
     if [[ -z $yearCsvFile ]]; then
-        echo "Error: $match_id not in range to map to <year_range>.csv"
+        echo "Error: match_id not in range to map to <year_range>.csv"
         continue
     fi
 
