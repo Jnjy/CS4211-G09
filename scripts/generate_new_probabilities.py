@@ -35,6 +35,6 @@ def process_prob(home_prob_range, away_prob_range):
 
 
 if __name__ == '__main__':
-    seasons = [1516, ]  # 1617, 1718, 1819, 1920, 2021
+    seasons = [1516, 1617, 1718, 1819, 1920, 2021]  # 1617, 1718, 1819, 1920, 2021
     for season in seasons:
         update_season_probabilities(season)
