@@ -118,7 +118,7 @@ def generate_stats_template(df, match_id, year, team):
     atkForStats = 'AtkFor = '
     if atkForLen == 0:
         atkForStats += 'Skip;'
-    for idx, pos_val in enumerate(generate_positions_for_stats(atkForLen)):
+    for idx, pos_val in enumerate(generate_positions_for_stats(atkForLen)): # If need to reverse order of player stats for row, just reverse here.
         atkForStats += f'[pos[{pos_val}] == 1]For({away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
                        f'{away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
                        f'{away_stats.pop(0)}, {pos_val}){" [] " if idx < atkForLen - 1 else ";"}'
