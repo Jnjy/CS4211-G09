@@ -6,7 +6,7 @@ outputDirectory="./data_output/generated_probabilities"
 outputFile="./data_output/out.txt"
 pattern="\[(-?[0-9]+\.[0-9]+), (-?[0-9]+\.[0-9]+)\]"
 
-yearRangeArray=("1516" "1617" "1718" "1819" "1920" "2021")
+yearRangeArray=("1516" "1617")
 
 for item in "${yearRangeArray[@]}"; do
     echo "match_id,match_url,team,low,high" > "$outputDirectory/$item.csv"
@@ -19,16 +19,18 @@ for pcspFile in "$pcspDirectory"/*.pcsp; do
 
     if ((matchId < 13000)); then
         yearCsvFile="1516.csv"
-    elif ((matchId < 15000)); then
+    elif ((matchId >= 13000 && matchId < 15000)); then
         yearCsvFile="1617.csv"
-    elif ((matchId < 23000)); then
-        yearCsvFile="1718.csv"
-    elif ((matchId < 39000)); then
-        yearCsvFile="1819.csv"
-    elif ((matchId < 47000)); then
-        yearCsvFile="1920.csv"
-    elif ((matchId < 60000)); then
-        yearCsvFile="2021.csv"
+    elif ((matchId >= 15000)); then
+        break
+#    elif ((matchId < 23000)); then
+#        yearCsvFile="1718.csv"
+#    elif ((matchId < 39000)); then
+#        yearCsvFile="1819.csv"
+#    elif ((matchId < 47000)); then
+#        yearCsvFile="1920.csv"
+#    elif ((matchId < 60000)); then
+#        yearCsvFile="2021.csv"
     fi
 
     if [[ -z $yearCsvFile ]]; then

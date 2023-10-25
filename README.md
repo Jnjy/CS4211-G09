@@ -13,8 +13,25 @@
 2. Run .pcsp files with PAT (Powershell)
    1. In powershell terminal in the project root directory, run `get_probability`
    2. You should observe that `./data_output/generated_probabilities` will have `<year_range>.csv` files generated
-   3. For bash users, in bash terminal in root directory run `chmod +x get_probability.sh`. Then `./get_probability`
-   4. You should observe the same as (iii)
+
+   ### OR
+
+#### Sequential Generation (Slow...)
+3. For bash users, in bash terminal in root directory run `chmod +x get_probability.sh`. Then `./get_probability`
+   1. You should observe the same as (iii)
+
+#### Concurrent generation (Recommended!)
+- Three scripts will run concurrently to generate 15to17, 17to19, 19to21 PAT probability range.
+
+In bash terminal in root directory, run chmod for these 4 scripts
+```bash
+chmod +x ./get_probability_15to17.sh
+chmod +x ./get_probability_17to19.sh
+chmod +x ./get_probability_19to21.sh
+chmod +x ./get_probability_concurrent.sh
+```
+Then, run `./get_probability_concurrent.sh`
+
 
 #### WIP
 3. Run generate_new_probabilities.py script to generate new_probabilities (refer to betting_simulation)
