@@ -29,9 +29,9 @@ for ((i=3038; i<${#pcspFiles[@]}; i++)); do # Ball park the start index, there i
 #        yearCsvFile="1718.csv"
 #    elif ((matchId < 39000)); then
 #        yearCsvFile="1819.csv"
-    if ((matchId >= 39000) && (matchId < 47000)); then
+    if ((matchId >= 39000 && matchId < 47000)); then
         yearCsvFile="1920.csv"
-    elif ((matchId >= 47000) && (matchId < 60000)); then
+    elif ((matchId >= 47000 && matchId < 60000)); then
         yearCsvFile="2021.csv"
     fi
 
