@@ -4,7 +4,11 @@ import player_enum
 
 
 def get_player_stats_by_id(file_path, player_id):
-    df = pd.read_csv(file_path)
+    specific_player_columns = ['sofifa_id', 'attacking_short_passing', 'skill_long_passing', 'defending_sliding_tackle',
+                               'skill_dribbling', 'power_long_shots', 'attacking_crossing', 'attacking_finishing',
+                               'attacking_volleys', 'attacking_heading_accuracy', 'goalkeeping_kicking',
+                               'goalkeeping_handling']
+    df = pd.read_csv(file_path, engine='pyarrow', usecols=specific_player_columns)
     df = df[df['sofifa_id'] == player_id]
     return df
 
@@ -13,40 +17,51 @@ def get_player_stats_by_ids(year="20152016", player_ids=[], is_away_team=False, 
     file_path = f"./datasets/ratings/epl_ratings_{year}.csv"
     target_file = "./data_output/match_player_stats_away.txt" if is_away_team else "./data_output/match_player_stats_home.txt"
     action_stats_arr = []
-    with open(target_file, "w") as file:
-        sys.stdout = file
-        for idx, player_id in enumerate(player_ids):
-            player_stats_df = get_player_stats_by_id(file_path, player_id)
-            if idx == 0:
-                output_player_stats(player_stats_df, player_enum.GOALKEEPER)
-                action_stats_arr.extend(get_player_stats(player_stats_df, is_away_team)[player_enum.GK])
-            if len(lineup) == 3:
-                if 1 <= idx <= lineup[0]:
-                    output_player_stats(player_stats_df, player_enum.DEFENDER)
-                    action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.DEF])
-                elif lineup[0] < idx <= lineup[0] + lineup[1]:
-                    output_player_stats(player_stats_df, player_enum.MIDFIELDER)
-                    action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.MID])
-                elif lineup[0] + lineup[1] < idx <= lineup[0] + lineup[1] + lineup[2]:
-                    output_player_stats(player_stats_df, player_enum.FORWARD)
-                    action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.FOR])
-                    action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.F_MID])
-            if len(lineup) == 4:
-                if 1 <= idx <= lineup[0]:
-                    output_player_stats(player_stats_df, player_enum.DEFENDER)
-                    action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.DEF])
-                elif lineup[0] < idx <= lineup[0] + lineup[1]:
-                    output_player_stats(player_stats_df, player_enum.MIDFIELDER)
-                    action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.MID])
-                elif lineup[0] + lineup[1] < idx <= lineup[0] + lineup[1] + lineup[2]:
-                    output_player_stats(player_stats_df, player_enum.MIDFIELDER)
-                    action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.MID])
-                elif lineup[0] + lineup[1] + lineup[2] < idx <= lineup[0] + lineup[1] + lineup[2] + lineup[3]:
-                    output_player_stats(player_stats_df, player_enum.FORWARD)
-                    action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.FOR])
-                    action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.F_MID])
+    for idx, player_id in enumerate(player_ids):
+        player_stats_df = get_player_stats_by_id(file_path, player_id)
+        if idx == 0:
+            # output_player_stats(player_stats_df, player_enum.GOALKEEPER)
+            action_stats_arr.extend(get_player_stats(player_stats_df, is_away_team)[player_enum.GK])
+        if len(lineup) == 3:
+            if 1 <= idx <= lineup[0]:
+                # output_player_stats(player_stats_df, player_enum.DEFENDER)
+                action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.DEF])
+            elif lineup[0] < idx <= lineup[0] + lineup[1]:
+                # output_player_stats(player_stats_df, player_enum.MIDFIELDER)
+                action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.MID])
+            elif lineup[0] + lineup[1] < idx <= lineup[0] + lineup[1] + lineup[2]:
+                # output_player_stats(player_stats_df, player_enum.FORWARD)
+                action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.FOR])
+        if len(lineup) == 4:
+            if 1 <= idx <= lineup[0]:
+                # output_player_stats(player_stats_df, player_enum.DEFENDER)
+                action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.DEF])
+            elif lineup[0] < idx <= lineup[0] + lineup[1]:
+                # output_player_stats(player_stats_df, player_enum.MIDFIELDER)
+                action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.MID])
+            elif lineup[0] + lineup[1] < idx <= lineup[0] + lineup[1] + lineup[2]:
+                # output_player_stats(player_stats_df, player_enum.MIDFIELDER)
+                action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.MID])
+            elif lineup[0] + lineup[1] + lineup[2] < idx <= lineup[0] + lineup[1] + lineup[2] + lineup[3]:
+                # output_player_stats(player_stats_df, player_enum.FORWARD)
+                action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.FOR])
+        if len(lineup) == 5:
+            if 1 <= idx <= lineup[0]:
+                # output_player_stats(player_stats_df, player_enum.DEFENDER)
+                action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.DEF])
+            elif lineup[0] < idx <= lineup[0] + lineup[1]:
+                # output_player_stats(player_stats_df, player_enum.MIDFIELDER)
+                action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.MID])
+            elif lineup[0] + lineup[1] < idx <= lineup[0] + lineup[1] + lineup[2]:
+                # output_player_stats(player_stats_df, player_enum.MIDFIELDER)
+                action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.MID])
+            elif lineup[0] + lineup[1] + lineup[2] < idx <= lineup[0] + lineup[1] + lineup[2] + lineup[3]:
+                # output_player_stats(player_stats_df, player_enum.FORWARD)
+                action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.MID])
+            elif lineup[0] + lineup[1] + lineup[2] + lineup[3] < idx <= lineup[0] + lineup[1] + lineup[2] + lineup[3] \
+                    + lineup[4]:
+                action_stats_arr.extend(get_player_stats(player_stats_df)[player_enum.FOR])
 
-        sys.stdout = sys.__stdout__
     return action_stats_arr
 
 
@@ -55,7 +70,6 @@ def get_player_stats(df, is_away=False) -> dict[str, list]:
         "Def": [],
         "Mid": [],
         "For": [],
-        "ForMid": [],
         "GK": []
     }
     stats_map["Def"].extend((df['attacking_short_passing'].values[0], df['skill_long_passing'].values[0],
@@ -70,10 +84,6 @@ def get_player_stats(df, is_away=False) -> dict[str, list]:
                              df['attacking_volleys'].values[0], df['attacking_heading_accuracy'].values[0],
                              df['defending_sliding_tackle'].values[0], df['skill_dribbling'].values[0],
                             df['attacking_short_passing'].values[0], df['skill_long_passing'].values[0]))
-
-    stats_map["ForMid"].extend((df['attacking_short_passing'].values[0], df['skill_long_passing'].values[0],
-                                df['power_long_shots'].values[0], df['defending_sliding_tackle'].values[0],
-                                df['attacking_crossing'].values[0], df['skill_dribbling'].values[0]))
 
     if is_away:
         stats_map["GK"].extend((df['goalkeeping_kicking'].values[0], df['goalkeeping_kicking'].values[0]))
@@ -91,7 +101,7 @@ def output_player_stats(df, player_type: int):
     except:
         print("Player (fifa id) -> ", df['sofifa_id'].values[0])
 
-    print("Club Name -> ", df['club_name'].values[0])
+    # print("Club Name -> ", df['club_name'].values[0])
     # print("Short Pass -> ", df['attacking_short_passing'].values[0])
     # print("Long Pass -> ", df['skill_long_passing'].values[0])
     # print("Dribble -> ", df['skill_dribbling'].values[0])
