@@ -64,18 +64,20 @@ def get_soccer_field_grid(df, team):
     return entire_formation
 
 
-def generate_positions_for_stats(n):  # Generates 0001000 -> [C]
+def generate_positions_for_stats(n, row):  # Generates 0001000 -> [C]
+    posStr = ['L', 'RL', 'CL', 'C', 'CR', 'LR', 'R']
     pattern = pos_map[n]
 
     positions = []
-    print(pattern)
-    for i in range(len(pattern)):
-        if pattern[i] == "1":
-            positions.append(player_row_position[i])
+    row = row[1:-1]
+    for i in range(7):
+        if row[i] == 1:
+            positions.append(posStr[i])
+    print(row, "Positions -> ", positions)
     return positions
 
 
-def generate_stats_template(df, match_id, year, team):
+def generate_stats_template(df, match_id, year, team, grid_formation):
     home_stats, away_stats, home_lineup, away_lineup = read_match_and_generate_stats(df, match_id, year, team)
     assert len(away_lineup) in (3, 4, 5)
     atkDefLen, atkMid1Len, atkMid2Len, atkMid3Len, atkForLen = -1, -1, -1, -1, -1
@@ -98,7 +100,7 @@ def generate_stats_template(df, match_id, year, team):
     atkKepStats = f'AtkKep = [pos[C] == 1]Kep_1({away_stats.pop(0)}, {away_stats.pop(0)}, C);'
 
     atkDefStats = 'AtkDef = '
-    for idx, pos_val in enumerate(generate_positions_for_stats(atkDefLen)):
+    for idx, pos_val in enumerate(generate_positions_for_stats(atkDefLen, grid_formation[0])):
         atkDefStats += f'[pos[{pos_val}] == 1]Def({away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
                        f'{away_stats.pop(0)}, {pos_val}){" [] " if idx < atkDefLen - 1 else ";"}'
 
@@ -110,7 +112,8 @@ def generate_stats_template(df, match_id, year, team):
             break
         if idx == 2 and atkMid3Len == -1:
             break
-        for j, pos_val in enumerate(generate_positions_for_stats(atkMidLenList[idx])):
+        # print("Debug -> ", grid_formation[1:-1][0][idx], "Idx -> ", idx)
+        for j, pos_val in enumerate(generate_positions_for_stats(atkMidLenList[idx], grid_formation[1:-1][0][idx])):
             atkMidStatsList[idx] += f'[pos[{pos_val}] == 1]Mid{idx+1}({away_stats.pop(0)}, {away_stats.pop(0)}, ' \
                                    f'{away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
                                    f'{away_stats.pop(0)}, {pos_val}){" [] " if j < atkMidLenList[idx] - 1 else ";"}'
@@ -118,7 +121,8 @@ def generate_stats_template(df, match_id, year, team):
     atkForStats = 'AtkFor = '
     if atkForLen == 0:
         atkForStats += 'Skip;'
-    for idx, pos_val in enumerate(generate_positions_for_stats(atkForLen)): # If need to reverse order of player stats for row, just reverse here.
+    # If you need to reverse order of player stats for row, just reverse here. (Don't need! -HC)
+    for idx, pos_val in enumerate(generate_positions_for_stats(atkForLen, grid_formation[-1])):
         atkForStats += f'[pos[{pos_val}] == 1]For({away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
                        f'{away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
                        f'{away_stats.pop(0)}, {pos_val}){" [] " if idx < atkForLen - 1 else ";"}'
@@ -128,6 +132,7 @@ def generate_stats_template(df, match_id, year, team):
 
 
 def replace_file_content(df, match_id, team, grid_formation, year_str):
+    print("Grid Formation -> ", grid_formation)
     template_file = open('./template.pcsp', 'rt')
     data = template_file.read()
     template_file.close()
@@ -136,7 +141,7 @@ def replace_file_content(df, match_id, team, grid_formation, year_str):
     # Grids
     data = data.replace(soccer_field_grid["ATKDEFPOS"], str(grid_formation[0]).replace("'-1(6)'", '-1(6)'))
 
-    player_stats = generate_stats_template(df, match_id, year_str, team)
+    player_stats = generate_stats_template(df, match_id, year_str, team, grid_formation)
     mid_grids = grid_formation[1]
     blank_grid = "[-1(6), 0, 0, 0, 0, 0, 0, 0, -1(6)]"
     if len(mid_grids) == 1:
