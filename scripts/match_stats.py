@@ -38,17 +38,17 @@ def read_match_and_generate_stats(df, match_id, year, team):
         h_lineup, a_lineup = group_players_by_lineup(df, match_id)
 
         # Start getting player stats
-        home_stats = player_stats.get_player_stats_by_ids(year, home_ids, is_away_team=False, lineup=h_lineup)
-        away_stats = player_stats.get_player_stats_by_ids(year, away_ids, is_away_team=True, lineup=a_lineup)
-        return home_stats, away_stats, h_lineup, a_lineup
+        home_stats, home_weighted_stats = player_stats.get_player_stats_by_ids(year, home_ids, is_away_team=False, lineup=h_lineup)
+        away_stats, away_weighted_stats = player_stats.get_player_stats_by_ids(year, away_ids, is_away_team=True, lineup=a_lineup)
+        return home_stats, home_weighted_stats, away_stats, away_weighted_stats, h_lineup, a_lineup
     if team == 'home':
         away_ids, home_ids = get_match_stats_by_id(df, match_id)
         a_lineup, h_lineup = group_players_by_lineup(df, match_id)
 
         # Start getting player stats
-        home_stats = player_stats.get_player_stats_by_ids(year, home_ids, is_away_team=False, lineup=h_lineup)
-        away_stats = player_stats.get_player_stats_by_ids(year, away_ids, is_away_team=True, lineup=a_lineup)
-        return home_stats, away_stats, h_lineup, a_lineup
+        home_stats, home_weighted_stats = player_stats.get_player_stats_by_ids(year, home_ids, is_away_team=False, lineup=h_lineup)
+        away_stats, away_weighted_stats = player_stats.get_player_stats_by_ids(year, away_ids, is_away_team=True, lineup=a_lineup)
+        return home_stats, home_weighted_stats, away_stats, away_weighted_stats, h_lineup, a_lineup
 
 
 # Run from project root
@@ -59,8 +59,8 @@ def __main__():
     h_lineup, a_lineup = group_players_by_lineup(arguments[0], int(arguments[1]))
 
     # Start getting player stats
-    player_stats.get_player_stats_by_ids("20172018", home_ids, is_away_team=False, lineup=h_lineup)
-    player_stats.get_player_stats_by_ids("20172018", away_ids, is_away_team=True, lineup=a_lineup)
+    # player_stats.get_player_stats_by_ids("20172018", home_ids, is_away_team=False, lineup=h_lineup)
+    # player_stats.get_player_stats_by_ids("20172018", away_ids, is_away_team=True, lineup=a_lineup)
 
 
 if __name__ == '__main__':

@@ -9,8 +9,6 @@ for season in seasons:
     error_analysis_df = pd.merge(error_dfs, match_df, on="match_url", how="inner")
     unique_formations.extend(error_analysis_df['home_formation'])
     unique_formations.extend(error_analysis_df['away_formation'])
-    error_3511_df = error_analysis_df[error_analysis_df['home_formation'] == '5-3-2']
-    error_3511_df.to_csv(f'error_3511_{season}.csv')
     # print(len(error_3511_df))
     error_analysis_df.to_csv(f'error_analysis_{season}.csv')
 

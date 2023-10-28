@@ -69,76 +69,76 @@ Kep_1(r_shortPass, r_longPass, p) = [atkDefPos[p-2] == 1 || atkDefPos[p-1] == 1 
 
 Def(r_shortPass, r_longPass, r_tackled, r_dribble, p) = [atkMid1Pos[p-2] == 1 || atkMid1Pos[p-1] == 1 || atkMid1Pos[p] == 1 || atkMid1Pos[p+1] == 1 || atkMid1Pos[p+2] == 1]shortPass1 -> pcase {
 	r_shortPass: pass1 -> UpdatePos(p, SP); AtkMid1
-	r_dribble - r_tackled: tackled{danger = 6;} -> Skip
+	r_tackled: tackled{danger = 6;} -> Skip
 } [] [atkMid1Pos[p-6] == 1 || atkMid1Pos[p-5] == 1 || atkMid1Pos[p-4] == 1 || atkMid1Pos[p-3] == 1 || atkMid1Pos[p+3] == 1 || atkMid1Pos[p+4] == 1 || atkMid1Pos[p+5] == 1 || atkMid1Pos[p+6] == 1]longPass1 -> pcase {
 	r_longPass: pass1 -> UpdatePos(p, LP); AtkMid1
-	r_dribble - r_tackled: tackled{danger = 6;} -> Skip
+	r_tackled: tackled{danger = 6;} -> Skip
 } [] [atkMid2Pos[p-2] == 1 || atkMid2Pos[p-1] == 1 || atkMid2Pos[p] == 1 || atkMid2Pos[p+1] == 1 || atkMid2Pos[p+2] == 1]shortPass2 -> pcase {
 	r_shortPass: pass2 -> UpdatePos(p, SP); AtkMid2
-	r_dribble - r_tackled: tackled{danger = 6;} -> Skip
+	r_tackled: tackled{danger = 6;} -> Skip
 } [] [atkMid2Pos[p-6] == 1 || atkMid2Pos[p-5] == 1 || atkMid2Pos[p-4] == 1 || atkMid2Pos[p-3] == 1 || atkMid2Pos[p+3] == 1 || atkMid2Pos[p+4] == 1 || atkMid2Pos[p+5] == 1 || atkMid2Pos[p+6] == 1]longPass2 -> pcase {
 	r_longPass: pass2 -> UpdatePos(p, LP); AtkMid2
-	r_dribble - r_tackled: tackled{danger = 6;} -> Skip
+	r_tackled: tackled{danger = 6;} -> Skip
 } [] [atkMid3Pos[p-2] == 1 || atkMid3Pos[p-1] == 1 || atkMid3Pos[p] == 1 || atkMid3Pos[p+1] == 1 || atkMid3Pos[p+2] == 1]shortPass3 -> pcase {
 	r_shortPass: pass3 -> UpdatePos(p, SP); AtkMid3
-	r_dribble - r_tackled: tackled{danger = 6;} -> Skip
+	r_tackled: tackled{danger = 6;} -> Skip
 } [] [atkMid3Pos[p-6] == 1 || atkMid3Pos[p-5] == 1 || atkMid3Pos[p-4] == 1 || atkMid3Pos[p-3] == 1 || atkMid3Pos[p+3] == 1 || atkMid3Pos[p+4] == 1 || atkMid3Pos[p+5] == 1 || atkMid3Pos[p+6] == 1]longPass3 -> pcase {
 	r_longPass: pass3 -> UpdatePos(p, LP); AtkMid3
-	r_dribble - r_tackled: tackled{danger = 6;} -> Skip
+	r_tackled: tackled{danger = 6;} -> Skip
 };
 
 Mid1(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [atkMid2Pos[p-2] == 1 || atkMid2Pos[p-1] == 1 || atkMid2Pos[p] == 1 || atkMid2Pos[p+1] == 1 || atkMid2Pos[p+2] == 1]shortPass -> pcase {
 	r_shortPass: shortPass2 -> UpdatePos(p, SP); AtkMid2
-	r_dribble - r_tackled: tackled{danger = 5;} -> Skip
+	r_tackled: tackled{danger = 5;} -> Skip
 } [] [atkMid2Pos[p-6] == 1 || atkMid2Pos[p-5] == 1 || atkMid2Pos[p-4] == 1 || atkMid2Pos[p-3] == 1 || atkMid2Pos[p+3] == 1 || atkMid2Pos[p+4] == 1 || atkMid2Pos[p+5] == 1 || atkMid2Pos[p+6] == 1]longPass -> pcase {
 	r_longPass: longPass2 -> UpdatePos(p, LP); AtkMid2
-	r_dribble - r_tackled: tackled{danger = 5;} -> Skip
+	r_tackled: tackled{danger = 5;} -> Skip
 } [] [atkMid3Pos[p-2] == 1 || atkMid3Pos[p-1] == 1 || atkMid3Pos[p] == 1 || atkMid3Pos[p+1] == 1 || atkMid3Pos[p+2] == 1]shortPass -> pcase {
 	r_shortPass: shortPass3 -> UpdatePos(p, SP); AtkMid3
-	r_dribble - r_tackled: tackled{danger = 5;} -> Skip
+	r_tackled: tackled{danger = 5;} -> Skip
 } [] [atkMid3Pos[p-6] == 1 || atkMid3Pos[p-5] == 1 || atkMid3Pos[p-4] == 1 || atkMid3Pos[p-3] == 1 || atkMid3Pos[p+3] == 1 || atkMid3Pos[p+4] == 1 || atkMid3Pos[p+5] == 1 || atkMid3Pos[p+6] == 1]longPass -> pcase {
 	r_longPass: longPass3 -> UpdatePos(p, LP); AtkMid3
-	r_dribble - r_tackled: tackled{danger = 5;} -> Skip
+	r_tackled: tackled{danger = 5;} -> Skip
 } [] [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
 	r_shortPass: shortPassFor -> UpdatePos(p, SP); AtkFor
-	r_dribble - r_tackled: tackled{danger = 5;} -> Skip
+	r_tackled: tackled{danger = 5;} -> Skip
 } [] [atkForPos[p-6] == 1 || atkForPos[p-5] == 1 || atkForPos[p-4] == 1 || atkForPos[p-3] == 1 || atkForPos[p+3] == 1 || atkForPos[p+4] == 1 || atkForPos[p+5] == 1 || atkForPos[p+6] == 1]longPass -> pcase {
 	r_longPass: longPassFor{inAir = true;} -> UpdatePos(p, LP); AtkFor
-	r_dribble - r_tackled: tackled{danger = 5;} -> Skip
+	r_tackled: tackled{danger = 5;} -> Skip
 } [] [defKepPos[C] == 1]longShot -> pcase {
 	r_longShot: shoot -> UpdatePos(p, LS); DefKep
-	r_dribble - r_tackled: tackled{danger = 5;} -> Skip
+	r_tackled: tackled{danger = 5;} -> Skip
 } [] [atkForPos[RL] == 1 || atkForPos[LR] == 1]attackCross -> pcase {
 	r_cross: cross -> UpdatePos(p, AC); AtkFor
-	r_dribble - r_tackled: tackled{danger = 5;} -> Skip
+	r_tackled: tackled{danger = 5;} -> Skip
 };
 
 Mid2(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [atkMid3Pos[p-2] == 1 || atkMid3Pos[p-1] == 1 || atkMid3Pos[p] == 1 || atkMid3Pos[p+1] == 1 || atkMid3Pos[p+2] == 1]shortPass -> pcase {
 	r_shortPass: pass -> UpdatePos(p, SP); AtkMid3
-	r_dribble - r_tackled: tackled{danger = 4;} -> Skip
+	r_tackled: tackled{danger = 4;} -> Skip
 } [] [atkMid3Pos[p-6] == 1 || atkMid3Pos[p-5] == 1 || atkMid3Pos[p-4] == 1 || atkMid3Pos[p-3] == 1 || atkMid3Pos[p+3] == 1 || atkMid3Pos[p+4] == 1 || atkMid3Pos[p+5] == 1 || atkMid3Pos[p+6] == 1]longPass -> pcase {
 	r_longPass: longPass3 -> UpdatePos(p, LP); AtkMid3
-	r_dribble - r_tackled: tackled{danger = 4;} -> Skip
+	r_tackled: tackled{danger = 4;} -> Skip
 } [] [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
 	r_shortPass: pass -> UpdatePos(p, SP); AtkFor
-	r_dribble - r_tackled: tackled{danger = 4;} -> Skip
+	r_tackled: tackled{danger = 4;} -> Skip
 } [] [atkForPos[p-6] == 1 || atkForPos[p-5] == 1 || atkForPos[p-4] == 1 || atkForPos[p-3] == 1 || atkForPos[p+3] == 1 || atkForPos[p+4] == 1 || atkForPos[p+5] == 1 || atkForPos[p+6] == 1]longPass -> pcase {
 	r_longPass: pass{inAir = true;} -> UpdatePos(p, LP); AtkFor
-	r_dribble - r_tackled: tackled{danger = 4;} -> Skip
+	r_tackled: tackled{danger = 4;} -> Skip
 } [] [defKepPos[C] == 1]longShot -> pcase {
 	r_longShot: shoot -> UpdatePos(p, LS); DefKep
-	r_dribble - r_tackled: tackled{danger = 4;} -> Skip
+	r_tackled: tackled{danger = 4;} -> Skip
 };
 
 Mid3(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
 	r_shortPass: pass -> UpdatePos(p, SP); AtkFor
-	r_dribble - r_tackled: tackled{danger = 3;} -> Skip
+	r_tackled: tackled{danger = 3;} -> Skip
 } [] [atkForPos[p-6] == 1 || atkForPos[p-5] == 1 || atkForPos[p-4] == 1 || atkForPos[p-3] == 1 || atkForPos[p+3] == 1 || atkForPos[p+4] == 1 || atkForPos[p+5] == 1 || atkForPos[p+6] == 1]longPass -> pcase {
 	r_longPass: pass{inAir = true;} -> UpdatePos(p, LP); AtkFor
-	r_dribble - r_tackled: tackled{danger = 3;} -> Skip
+	r_tackled: tackled{danger = 3;} -> Skip
 } [] [defKepPos[C] == 1]longShot -> pcase {
 	r_longShot: shoot -> UpdatePos(p, LS); DefKep
-	r_dribble - r_tackled: tackled{danger = 3;} -> Skip
+	r_tackled: tackled{danger = 3;} -> Skip
 };
 
 For(r_closeShot, r_longShot, r_volley, r_header, r_tackled, r_dribble, r_shortPass, r_longPass, p) = [defKepPos[C] == 1]finish -> pcase {

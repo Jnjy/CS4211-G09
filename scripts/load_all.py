@@ -1,6 +1,7 @@
 import copy
 import os
 import pandas as pd
+from statistics import mean
 
 from match_stats import read_match_and_generate_stats
 from template_enum import player_position_row, soccer_field_grid, player_types, pos_map, player_row_position
@@ -78,7 +79,8 @@ def generate_positions_for_stats(n, row):  # Generates 0001000 -> [C]
 
 
 def generate_stats_template(df, match_id, year, team, grid_formation):
-    home_stats, away_stats, home_lineup, away_lineup = read_match_and_generate_stats(df, match_id, year, team)
+    home_stats, home_weighted_stats, away_stats, away_weighted_stats, home_lineup, away_lineup \
+        = read_match_and_generate_stats(df, match_id, year, team)
     assert len(away_lineup) in (3, 4, 5)
     atkDefLen, atkMid1Len, atkMid2Len, atkMid3Len, atkForLen = -1, -1, -1, -1, -1
     if len(away_lineup) == 3:
@@ -102,7 +104,7 @@ def generate_stats_template(df, match_id, year, team, grid_formation):
     atkDefStats = 'AtkDef = '
     for idx, pos_val in enumerate(generate_positions_for_stats(atkDefLen, grid_formation[0])):
         atkDefStats += f'[pos[{pos_val}] == 1]Def({away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
-                       f'{away_stats.pop(0)}, {pos_val}){" [] " if idx < atkDefLen - 1 else ";"}'
+                       f'{int(mean(home_weighted_stats["Def"])) if len(home_weighted_stats["Def"]) > 0 else 0}, {pos_val}){" [] " if idx < atkDefLen - 1 else ";"}'
 
     # AtkMid1, AtkMid2, AtkMid3
     atkMidStatsList = ['', '', '']
@@ -115,7 +117,7 @@ def generate_stats_template(df, match_id, year, team, grid_formation):
         # print("Debug -> ", grid_formation[1:-1][0][idx], "Idx -> ", idx)
         for j, pos_val in enumerate(generate_positions_for_stats(atkMidLenList[idx], grid_formation[1:-1][0][idx])):
             atkMidStatsList[idx] += f'[pos[{pos_val}] == 1]Mid{idx+1}({away_stats.pop(0)}, {away_stats.pop(0)}, ' \
-                                   f'{away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
+                                   f'{away_stats.pop(0)}, {int(mean(home_weighted_stats["Mid"])) if len(home_weighted_stats["Mid"]) > 0 else 0}, {away_stats.pop(0)}, ' \
                                    f'{away_stats.pop(0)}, {pos_val}){" [] " if j < atkMidLenList[idx] - 1 else ";"}'
 
     atkForStats = 'AtkFor = '
@@ -124,7 +126,7 @@ def generate_stats_template(df, match_id, year, team, grid_formation):
     # If you need to reverse order of player stats for row, just reverse here. (Don't need! -HC)
     for idx, pos_val in enumerate(generate_positions_for_stats(atkForLen, grid_formation[-1])):
         atkForStats += f'[pos[{pos_val}] == 1]For({away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
-                       f'{away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
+                       f'{away_stats.pop(0)}, {int(mean(home_weighted_stats["For"])) if len(home_weighted_stats["For"]) > 0 else 0}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
                        f'{away_stats.pop(0)}, {pos_val}){" [] " if idx < atkForLen - 1 else ";"}'
 
     defKepStats = f'DefKep = [pos[C] == 1]Kep_2({home_stats.pop(0)}, C);'
