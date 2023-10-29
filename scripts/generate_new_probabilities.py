@@ -25,6 +25,7 @@ def update_season_probabilities(year_range: int):
 
 def softmax(x):
     e_x = np.exp(x - np.max(x))
+    # e_x = x[0]
     return e_x / e_x.sum()
 
 
