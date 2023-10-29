@@ -1,3 +1,5 @@
 
 *.pyc
-pcsp_files/
+pcsp_files
+PAT340
+data_output
