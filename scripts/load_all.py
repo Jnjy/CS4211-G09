@@ -163,7 +163,7 @@ def generate_stats_template(df, match_id, year, team, grid_formation):
 
 def replace_file_content(df, match_id, team, grid_formation, year_str):
     print("Grid Formation -> ", grid_formation)
-    template_file = open('../template.pcsp', 'rt')
+    template_file = open('./template.pcsp', 'rt')
     data = template_file.read()
     template_file.close()
 
@@ -215,7 +215,7 @@ def replace_file_content(df, match_id, team, grid_formation, year_str):
 
 
 def __main__():
-    matches_dir = "../datasets/matches/"
+    matches_dir = "./datasets/matches/"
     specific_match_columns = ['match_url', 'home_xi_sofifa_ids', 'away_xi_sofifa_ids', 'home_formation',
                               'away_formation', 'home_sequence', 'away_sequence']
     for file_loc in os.listdir(matches_dir):
