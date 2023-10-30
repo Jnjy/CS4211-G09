@@ -10,7 +10,7 @@ def get_player_stats_by_id(file_path, player_id):
                                'skill_dribbling', 'power_long_shots', 'attacking_crossing', 'attacking_finishing',
                                'attacking_volleys', 'attacking_heading_accuracy', 'goalkeeping_kicking',
                                'goalkeeping_handling', 'defending_standing_tackle',
-                               'defending_sliding_tackle', 'mentality_interceptions']
+                               'defending_sliding_tackle', 'mentality_interceptions', 'mentality_penalties']
     df = pd.read_csv(file_path, engine='pyarrow', usecols=specific_player_columns)
     df = df[df['sofifa_id'] == player_id]
     return df
@@ -114,7 +114,7 @@ def get_player_stats(df, is_away=False) -> tuple[dict[str, list[Any]], dict[str,
     stats_map["For"].extend((df['attacking_finishing'].values[0], df['power_long_shots'].values[0],
                              df['attacking_volleys'].values[0], df['attacking_heading_accuracy'].values[0],
                              df['skill_dribbling'].values[0],
-                             df['attacking_short_passing'].values[0], df['skill_long_passing'].values[0]))
+                             df['attacking_short_passing'].values[0], df['skill_long_passing'].values[0] , df['mentality_penalties'].values[0]))
 
     stats_map_aux["For"] += (df['defending_standing_tackle'].values[0] + df['defending_sliding_tackle'].values[0]
                              + df['mentality_interceptions'].values[0]) / 3

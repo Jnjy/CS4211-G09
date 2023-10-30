@@ -326,8 +326,8 @@ For(r_closeShot, r_longShot, r_volley, r_header, r_tackled, r_dribble, r_shortPa
 };
 
 Kep_2(r_save, p, pm) = [isPenalty == true]attemptPenaltySave -> pcase {
-	25: save{danger = 1;} -> Skip
-	75: concede -> Skip
+	100 - pm: save{danger = 1;} -> Skip
+	pm: concede -> Skip
 } [] [isFreeKick == true] attemptFKSave -> pcase {
 	r_save: save{danger = 1;} -> Skip
 	100 - r_save: concede -> Skip
