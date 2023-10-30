@@ -17,7 +17,7 @@ def get_player_stats_by_id(file_path, player_id):
 
 
 def get_player_stats_by_ids(year="20152016", player_ids=[], is_away_team=False, lineup=[4, 2, 3, 1]):
-    file_path = f"./datasets/ratings/epl_ratings_{year}.csv"
+    file_path = f"../datasets/ratings/epl_ratings_{year}.csv"
     action_stats_arr = []
     player_weighted_stats_map = {
         'Def': [],
