@@ -195,7 +195,7 @@ Mid1(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [a
 	r_tackled: freekick -> pcase {
 		100 - r_tackled: foul{isFreeKick = true;} -> pcase {
 			//r_shortPass: pass{isFreeKick = false;} -> UpdatePos(p, SP); AtkFor
-			r_longPass: pass{isFreeKick = false; inAir = true} -> UpdatePos(p, LP); AtkFor
+			//r_longPass: pass{isFreeKick = false; inAir = true} -> UpdatePos(p, LP); AtkFor
 			r_longShot: shoot -> UpdatePos(p, LS); DefKep
 		}
 		r_tackled: clean{danger = 5;} -> Skip
