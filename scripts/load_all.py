@@ -103,8 +103,14 @@ def generate_stats_template(df, match_id, year, team, grid_formation):
 
     atkDefStats = 'AtkDef = '
     for idx, pos_val in enumerate(generate_positions_for_stats(atkDefLen, grid_formation[0])):
-        atkDefStats += f'[pos[{pos_val}] == 1]Def({away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
-                       f'{int(mean(home_weighted_stats["Def"])) if len(home_weighted_stats["Def"]) > 0 else 0}, {pos_val}){" [] " if idx < atkDefLen - 1 else ";"}'
+        r_shortpass = away_stats.pop(0)
+        r_longpass = away_stats.pop(0)
+        r_dribble = away_stats.pop(0)
+        r_tackle = int(mean(home_weighted_stats["Def"])) if len(home_weighted_stats["Def"]) > 0 else 0
+        weighted_tackle = int((1 - (r_dribble / (r_dribble + r_tackle))) * 100)
+
+        atkDefStats += f'[pos[{pos_val}] == 1]Def({r_shortpass}, {r_longpass}, {r_dribble}, ' \
+                       f'{weighted_tackle}, {pos_val}){" [] " if idx < atkDefLen - 1 else ";"}'
 
     # AtkMid1, AtkMid2, AtkMid3
     atkMidStatsList = ['', '', '']
@@ -116,21 +122,43 @@ def generate_stats_template(df, match_id, year, team, grid_formation):
             break
         # print("Debug -> ", grid_formation[1:-1][0][idx], "Idx -> ", idx)
         for j, pos_val in enumerate(generate_positions_for_stats(atkMidLenList[idx], grid_formation[1:-1][0][idx])):
-            atkMidStatsList[idx] += f'[pos[{pos_val}] == 1]Mid{idx+1}({away_stats.pop(0)}, {away_stats.pop(0)}, ' \
-                                   f'{away_stats.pop(0)}, {int(mean(home_weighted_stats["Mid"])) if len(home_weighted_stats["Mid"]) > 0 else 0}, {away_stats.pop(0)}, ' \
-                                   f'{away_stats.pop(0)}, {pos_val}){" [] " if j < atkMidLenList[idx] - 1 else ";"}'
+            r_shortpass = away_stats.pop(0)
+            r_longpass = away_stats.pop(0)
+            r_longshot = away_stats.pop(0)
+            r_cross = away_stats.pop(0)
+            r_dribble = away_stats.pop(0)
+            r_tackle = int(mean(home_weighted_stats["Mid"])) if len(home_weighted_stats["Mid"]) > 0 else 0
+            weighted_tackle = int((1 - (r_dribble / (r_dribble + r_tackle))) * 100)
+            
+            atkMidStatsList[idx] += f'[pos[{pos_val}] == 1]Mid{idx+1}({r_shortpass}, {r_longpass}, ' \
+                                   f'{r_longshot}, {weighted_tackle}, {r_cross}, ' \
+                                   f'{r_dribble}, {pos_val}){" [] " if j < atkMidLenList[idx] - 1 else ";"}'
 
     atkForStats = 'AtkFor = '
     if atkForLen == 0:
         atkForStats += 'Skip;'
     # If you need to reverse order of player stats for row, just reverse here. (Don't need! -HC)
-    for idx, pos_val in enumerate(generate_positions_for_stats(atkForLen, grid_formation[-1])):
-        atkForStats += f'[pos[{pos_val}] == 1]For({away_stats.pop(0)}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
-                       f'{away_stats.pop(0)}, {int(mean(home_weighted_stats["For"])) if len(home_weighted_stats["For"]) > 0 else 0}, {away_stats.pop(0)}, {away_stats.pop(0)}, ' \
-                       f'{away_stats.pop(0)}, {pos_val}){" [] " if idx < atkForLen - 1 else ";"}'
 
-    defKepStats = f'DefKep = [pos[C] == 1]Kep_2({home_stats.pop(0)}, C);'
-    return atkKepStats, atkDefStats, atkMidStatsList, atkForStats, defKepStats
+    highest_penalty_mentality = 0
+    for idx, pos_val in enumerate(generate_positions_for_stats(atkForLen, grid_formation[-1])):
+        r_finish = away_stats.pop(0)
+        r_longshot = away_stats.pop(0)
+        r_volley = away_stats.pop(0)
+        r_header = away_stats.pop(0)
+        r_dribble =away_stats.pop(0)
+        r_shortpass =away_stats.pop(0)
+        r_longpass = away_stats.pop(0)
+        curr_penalty_mentality = away_stats.pop(0)
+        highest_penalty_mentality = max(curr_penalty_mentality, highest_penalty_mentality)
+        r_tackle = int(mean(home_weighted_stats["For"])) if len(home_weighted_stats["For"]) > 0 else 0
+        weighted_tackle = int((1 - (r_dribble / (r_dribble + r_tackle))) * 100)
+
+        atkForStats += f'[pos[{pos_val}] == 1]For({r_finish}, {r_longshot}, {r_volley}, ' \
+                       f'{r_header}, {weighted_tackle}, {r_dribble}, {r_shortpass}, ' \
+                       f'{r_longpass}, {pos_val}){" [] " if idx < atkForLen - 1 else ";"}'
+
+    defKepStats = f'DefKep = [pos[C] == 1]Kep_2({home_stats.pop(0)}, C, PENALTY_MENTALITY);'
+    return atkKepStats, atkDefStats, atkMidStatsList, atkForStats, defKepStats, highest_penalty_mentality
 
 
 def replace_file_content(df, match_id, team, grid_formation, year_str):
@@ -144,6 +172,10 @@ def replace_file_content(df, match_id, team, grid_formation, year_str):
     data = data.replace(soccer_field_grid["ATKDEFPOS"], str(grid_formation[0]).replace("'-1(6)'", '-1(6)'))
 
     player_stats = generate_stats_template(df, match_id, year_str, team, grid_formation)
+    
+    highest_penalty_mentality = player_stats[-1]
+    
+    data = data.replace('#define PENALTY_MENTALITY 0;', f'#define PENALTY_MENTALITY {highest_penalty_mentality};')
     mid_grids = grid_formation[1]
     blank_grid = "[-1(6), 0, 0, 0, 0, 0, 0, 0, -1(6)]"
     if len(mid_grids) == 1:
@@ -202,7 +234,7 @@ def __main__():
             record = df.iloc[i]
             for team in team_arr:
                 field_grid = get_soccer_field_grid(record, team)
-
+                print(field_grid)
                 match_url = record.loc["match_url"]
                 match_url = match_url.split('/match/')
                 match_id = match_url[-1]
