@@ -157,7 +157,7 @@ def generate_stats_template(df, match_id, year, team, grid_formation):
                        f'{r_header}, {weighted_tackle}, {r_dribble}, {r_shortpass}, ' \
                        f'{r_longpass}, {pos_val}){" [] " if idx < atkForLen - 1 else ";"}'
 
-    defKepStats = f'DefKep = [pos[C] == 1]Kep_2({home_stats.pop(0)}, C, PENALTY_MENTALITY);'
+    defKepStats = f'DefKep = [pos[C] == 1]Kep_2({home_stats.pop(0)}, {home_stats.pop(0)}, C, PENALTY_MENTALITY);'
     return atkKepStats, atkDefStats, atkMidStatsList, atkForStats, defKepStats, highest_penalty_mentality
 
 

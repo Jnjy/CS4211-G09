@@ -343,15 +343,15 @@ For(r_closeShot, r_longShot, r_volley, r_header, r_tackled, r_dribble, r_shortPa
 
 };
 
-Kep_2(r_save, p, pm) = [isPenalty == true]attemptPenaltySave -> pcase {
-	100 - pm: save{danger = 1;} -> Skip
-	pm: concede -> Skip
+Kep_2(r_save, r_reflexes, p, pm) = [isPenalty == true]attemptPenaltySave -> pcase {
+  100 - pm: save{danger = 1;} -> Skip
+  pm: concede -> Skip
 } [] [isFreeKick == true] attemptFKSave -> pcase {
-	r_save: save{danger = 1;} -> Skip
-	100 - r_save: concede -> Skip
+  (r_save * r_reflexes) / 100: save{danger = 1;} -> Skip
+  100 - (r_save * r_reflexes) / 100: concede -> Skip
 } [] attemptSave -> pcase {
-	r_save: save{danger = 1;} -> Skip
-	100 - r_save: concede -> Skip
+  (r_save * r_reflexes) / 100: save{danger = 1;} -> Skip
+  100 - (r_save * r_reflexes) / 100: concede -> Skip
 };
 
 /****** position update ******/

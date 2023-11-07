@@ -9,7 +9,7 @@ def get_player_stats_by_id(file_path, player_id):
     specific_player_columns = ['sofifa_id', 'attacking_short_passing', 'skill_long_passing',
                                'skill_dribbling', 'power_long_shots', 'attacking_crossing', 'attacking_finishing',
                                'attacking_volleys', 'attacking_heading_accuracy', 'goalkeeping_kicking',
-                               'goalkeeping_handling', 'defending_standing_tackle',
+                               'goalkeeping_handling', 'goalkeeping_reflexes', 'defending_standing_tackle',
                                'defending_sliding_tackle', 'mentality_interceptions', 'mentality_penalties']
     df = pd.read_csv(file_path, engine='pyarrow', usecols=specific_player_columns)
     df = df[df['sofifa_id'] == player_id]
@@ -122,7 +122,7 @@ def get_player_stats(df, is_away=False) -> tuple[dict[str, list[Any]], dict[str,
     if is_away:
         stats_map["GK"].extend((df['goalkeeping_kicking'].values[0], df['goalkeeping_kicking'].values[0]))
     else:
-        stats_map["GK"].extend((df['goalkeeping_handling'].values[0],))
+        stats_map["GK"].extend((df['goalkeeping_handling'].values[0], df['goalkeeping_reflexes'].values[0]))
     return stats_map, stats_map_aux
 
 # run from project root
