@@ -31,6 +31,10 @@ Then, run `./get_probability_concurrent.sh`
 NOTE: It is okay to see not found errors, since indexes are ball parked (Set to way before the actual to prevent missing info)
 
 
-3. Run generate_new_probabilities.py script to generate new_probabilities (refer to betting_simulation)
+3. Run `python3 .\scripts\generate_new_probabilities.py` script to generate new_probabilities (refer to betting_simulation)
 
 4. Run betting simulation script
+```
+cd .\betting_simulation\
+python3 .\simulate.py
+```

@@ -199,16 +199,16 @@ Mid1(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [a
 		}
 		r_tackled: clean{danger = 5;} -> Skip
 	}
-//} [] [atkForPos[CL] == 1 || atkForPos[C] == 1 || atkForPos[CR] == 1]attackCross -> pcase {
-//	r_cross: cross -> UpdatePos(p, AC); AtkFor
-//	r_tackled: freekick -> pcase {
-//		100 - r_tackled: foul{isFreeKick = true;} -> pcase {
-//			r_cross: cross{isFreeKick = false;} -> UpdatePos(p, AC); AtkFor
-//			//r_longPass: pass{isFreeKick = false; inAir = true} -> UpdatePos(p, LP); AtkFor
-//			r_longShot: shoot -> UpdatePos(p, LS); DefKep
-//		}
-//		r_tackled: clean{danger = 5;} -> Skip
-//	}
+} [] [atkForPos[CL] == 1 || atkForPos[C] == 1 || atkForPos[CR] == 1]attackCross -> pcase {
+	r_cross: cross -> UpdatePos(p, AC); AtkFor
+	r_tackled: freekick -> pcase {
+		100 - r_tackled: foul{isFreeKick = true;} -> pcase {
+			r_cross: cross{isFreeKick = false;} -> UpdatePos(p, AC); AtkFor
+			//r_longPass: pass{isFreeKick = false; inAir = true} -> UpdatePos(p, LP); AtkFor
+			r_longShot: shoot -> UpdatePos(p, LS); DefKep
+		}
+		r_tackled: clean{danger = 5;} -> Skip
+	}
 };
 
 Mid2(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [atkMid3Pos[p-2] == 1 || atkMid3Pos[p-1] == 1 || atkMid3Pos[p] == 1 || atkMid3Pos[p+1] == 1 || atkMid3Pos[p+2] == 1]shortPass -> pcase {
@@ -262,16 +262,16 @@ Mid2(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [a
 		}
 		r_tackled: clean{danger = 5;} -> Skip
 	}
-//} [] [atkForPos[CL] == 1 || atkForPos[C] == 1 || atkForPos[CR] == 1]attackCross -> pcase {
-//	r_cross: cross -> UpdatePos(p, AC); AtkFor
-//	r_tackled: freekick -> pcase {
-//		100 - r_tackled: foul{isFreeKick = true;} -> pcase {
-//			r_cross: cross{isFreeKick = false;} -> UpdatePos(p, AC); AtkFor
-//			//r_longPass: pass{isFreeKick = false; inAir = true} -> UpdatePos(p, LP); AtkFor
-//			r_longShot: shoot -> UpdatePos(p, LS); DefKep
-//		}
-//		r_tackled: clean{danger = 5;} -> Skip
-//	}
+} [] [atkForPos[CL] == 1 || atkForPos[C] == 1 || atkForPos[CR] == 1]attackCross -> pcase {
+	r_cross: cross -> UpdatePos(p, AC); AtkFor
+	r_tackled: freekick -> pcase {
+		100 - r_tackled: foul{isFreeKick = true;} -> pcase {
+			r_cross: cross{isFreeKick = false;} -> UpdatePos(p, AC); AtkFor
+			//r_longPass: pass{isFreeKick = false; inAir = true} -> UpdatePos(p, LP); AtkFor
+			r_longShot: shoot -> UpdatePos(p, LS); DefKep
+		}
+		r_tackled: clean{danger = 5;} -> Skip
+	}
 };
 
 Mid3(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [atkForPos[p-2] == 1 || atkForPos[p-1] == 1 || atkForPos[p] == 1 || atkForPos[p+1] == 1 || atkForPos[p+2] == 1]shortPass -> pcase {
@@ -304,16 +304,16 @@ Mid3(r_shortPass, r_longPass, r_longShot, r_tackled, r_cross, r_dribble, p) = [a
 		}
 		r_tackled: clean{danger = 3;} -> Skip
 	}
-//} [] [atkForPos[CL] == 1 || atkForPos[C] == 1 || atkForPos[CR] == 1]attackCross -> pcase {
-//	r_cross: cross -> UpdatePos(p, AC); AtkFor
-//	r_tackled: freekick -> pcase {
-//		100 - r_tackled: foul{isFreeKick = true;} -> pcase {
-//			r_cross: cross{isFreeKick = false;} -> UpdatePos(p, AC); AtkFor
-//			//r_longPass: pass{isFreeKick = false; inAir = true} -> UpdatePos(p, LP); AtkFor
-//			r_longShot: shoot -> UpdatePos(p, LS); DefKep
-//		}
-//		r_tackled: clean{danger = 5;} -> Skip
-//	}
+} [] [atkForPos[CL] == 1 || atkForPos[C] == 1 || atkForPos[CR] == 1]attackCross -> pcase {
+	r_cross: cross -> UpdatePos(p, AC); AtkFor
+	r_tackled: freekick -> pcase {
+		100 - r_tackled: foul{isFreeKick = true;} -> pcase {
+			r_cross: cross{isFreeKick = false;} -> UpdatePos(p, AC); AtkFor
+			//r_longPass: pass{isFreeKick = false; inAir = true} -> UpdatePos(p, LP); AtkFor
+			r_longShot: shoot -> UpdatePos(p, LS); DefKep
+		}
+		r_tackled: clean{danger = 5;} -> Skip
+	}
 };
 
 For(r_closeShot, r_longShot, r_volley, r_header, r_tackled, r_dribble, r_shortPass, r_longPass, p) = [defKepPos[C] == 1]finish -> pcase {
